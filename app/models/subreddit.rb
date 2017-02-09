@@ -1,4 +1,7 @@
 class Subreddit < ApplicationRecord
+  has_many :subscriptions
+  has_many :users, through: :subscriptions
+
   BAD_NAME_REGEX = /\W/
 
   before_save { name.downcase! }

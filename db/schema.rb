@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208201743) do
+ActiveRecord::Schema.define(version: 20170209101838) do
 
   create_table "subreddits", force: :cascade do |t|
     t.string   "name",        null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170208201743) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["name"], name: "index_subreddits_on_name", unique: true
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "subreddit_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["subreddit_id"], name: "index_subscriptions_on_subreddit_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
