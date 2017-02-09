@@ -1,15 +1,12 @@
 class User < ApplicationRecord
-  NAME_REGEX  = /[\t|\r|\n|\f]+/m
+  BAD_NAME_REGEX  = /\W/
 
-  before_save do
-    email.downcase!
-    name.downcase!
-  end
+  before_save { name.downcase! }
 
   validates :name, presence: true,
                    length: { in: 2..20 },
-                   format: { without: NAME_REGEX }
-                   uniqueness: { case_sensitive: false },
+                   format: { without: BAD_NAME_REGEX },
+                   uniqueness: { case_sensitive: false }
 
   validates :password, confirmation: true,
                        presence: true,

@@ -11,6 +11,9 @@ RSpec.describe User, type: :model do
     end
   end
 
+  ##########
+  # N A M E
+
   context "with a blank name" do
     it "will not be valid" do
       user.name = "   "
@@ -39,9 +42,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "with a name with special chars" do
+  context "with a name with non-word chars" do
     it "will not be valid" do
-      ["foo\tbar", "\ronald", "An\na"].each do |name|
+      ["foo\tbar", "\ronald", "An\na", "m@thew", "1!1!1!!"].each do |name|
         user.name = name
 
         expect(user.valid?).to be false
@@ -61,6 +64,19 @@ RSpec.describe User, type: :model do
       expect(user.name).to eql varied_case_name.downcase
     end
   end
+
+  context "when duplicate names given" do
+    it "will mark the duplicate as invalid" do
+      duplicate_user = user.dup
+      duplicate_user.name = user.name.upcase
+      user.save
+
+      expect(duplicate_user.valid?).to be false
+    end
+  end
+
+  #################
+  # P A S S W O R D
 
   context "with a blank password" do
     it "will not be valid" do
