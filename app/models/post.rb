@@ -1,11 +1,10 @@
 class Post < ApplicationRecord
+  has_many :comments
   belongs_to :user
-  belongs_to :subreddit
+  belongs_to :subreddit, dependent: :destroy
 
   before_validation :process_given_link
   before_save :clean_up_post_for_database
-
-  validate
 
   validates :title, presence: true,
                     length: { maximum: 255 }
