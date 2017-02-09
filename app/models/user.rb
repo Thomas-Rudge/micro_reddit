@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :subscriptions
+  has_many :posts
   has_many :subreddits, through: :subscriptions
 
   BAD_NAME_REGEX  = /\W/
