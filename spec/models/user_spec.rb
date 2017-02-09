@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let (:user) { User.new(name:"FooBar",
+  let (:user) { User.new(name:"foobar",
                          password:"password",
                          password_confirmation:"password")}
 
@@ -48,6 +48,17 @@ RSpec.describe User, type: :model do
         expect(user.errors.details[:name]).to be_an(Array)
         expect(user.errors.details[:name][0][:error]).to eql :invalid
       end
+    end
+  end
+
+  context "when the name is not all downcase" do
+    it "will be saved in downcase" do
+      varied_case_name = "FoObAr"
+      user.name = varied_case_name
+      user.save
+      user.reload
+
+      expect(user.name).to eql varied_case_name.downcase
     end
   end
 

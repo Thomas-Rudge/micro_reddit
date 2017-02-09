@@ -7,8 +7,9 @@ class User < ApplicationRecord
   end
 
   validates :name, presence: true,
-                  length: { in: 2..20 },
-                  format: { without: NAME_REGEX }
+                   length: { in: 2..20 },
+                   format: { without: NAME_REGEX }
+                   uniqueness: { case_sensitive: false },
 
   validates :password, confirmation: true,
                        presence: true,
