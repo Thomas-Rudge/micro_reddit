@@ -90,6 +90,10 @@ post.comments
 
 ---
 
+![Data-Model](https://raw.githubusercontent.com/Thomas-Rudge/micro_reddit/master/planning/micro_reddit_data_model1_1.png)
+
+---
+
 //TODO
 
 * Create controllers
