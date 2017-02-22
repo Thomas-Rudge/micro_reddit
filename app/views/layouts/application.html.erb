@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MicroReddit</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= render "layouts/rails_default" %>
+    <%= render "layouts/shim" %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <%= render "layouts/header" %>
+      <div class="wrapper">
+        <%= render "layouts/flasher" %>
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    </div>
   </body>
+  <%= debug(params) if Rails.env.development? && false %>
 </html>
+
