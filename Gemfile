@@ -18,7 +18,9 @@ gem 'bcrypt',     '~> 3.1.11'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails',        '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'capybara',           '~> 2.5'
 end
 
 group :development do
@@ -31,6 +33,9 @@ end
 
 group :test do
   gem 'guard'
+  gem 'faker',            '~> 1.6.1'
+  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'database_cleaner', '~> 1.5'
 end
 
 group :production do
