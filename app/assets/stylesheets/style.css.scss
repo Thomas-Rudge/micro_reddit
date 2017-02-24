@@ -14,12 +14,13 @@
 $logo-font: varela_roundregular, 'Andale Mono', 'Avant Garde', 'Century Gothic', Tahoma, sans-serif;
 $content-font: verdana, arial, helvetica, sans-serif;
 $header-blue:  #A0A6CF;
-$body-blue:    #717AAF;
+$body-blue:    #EDEFF8;
 $neutral-blue: #4C5694;
 $dark-blue:    #2F397B;
 $light-yellow: #FFF297;
 $dark-yellow:  #B3A334;
 $logo-grey:    #202020;
+$text-grey:    #888;
 $micro-red:    #FE1728;
 
 /* Mixins */
@@ -51,7 +52,7 @@ html {
 body {
   @include shrink_wrap;
   color: $body-blue;
-  min-height: 100%;
+  height: 100%;
   z-index: 1;
 }
 
@@ -60,16 +61,13 @@ body {
   display: block;
   height: 100%;
   width: 100%;
+  color: $dark-blue
 }
 
 .container {
   @include shrink_wrap;
   display: block;
   position: relative;
-}
-
-.table_row {
-  display: table-row;
 }
 
 /* Header */
@@ -89,7 +87,6 @@ h1 {
   font-family: $logo-font;
   font-size: 36pt;
   font-weight: bold;
-  color: $logo-grey;
   background: transparent;
   margin: 5px;
   text-shadow: 1px 1px 1px #777;
@@ -97,6 +94,7 @@ h1 {
 
   a {
     text-decoration: none;
+    color: $logo-grey;
   }
 
   span {
@@ -160,25 +158,31 @@ nav {
 .footer {
   font-family: $content-font;
   @include shrink_wrap;
-  display: table-row;
-  height:1px;
-  background: $neutral-blue;
-  color: white;
-}
+  display: block;
+  background: $body-blue;
+  color: $text-grey;
+  overflow: hidden;
 
-.footer_text {
-  font-size: 12pt;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  margin: 5px;
-}
+  span {
+    font-size: 9pt;
+    margin: 10px;
+    float: left;
+  }
 
-.footer_nav {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  margin: 5px;
+  nav {
+    font-size: 9pt;
+    margin: 10px;
+    float: right;
+  }
+
+  a {
+    text-decoration: none;
+    color: $dark-blue;
+
+    &:hover {
+      color: $dark-yellow;
+    }
+  }
 }
 
 /* main */
@@ -195,7 +199,8 @@ nav {
 }
 
 .sidebar {
-  width: 150px;
+  display: table-cell;
+  width: 300px;
   background: $body-blue;
 }
 

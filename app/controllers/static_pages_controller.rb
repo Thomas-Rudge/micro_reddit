@@ -4,7 +4,4 @@ class StaticPagesController < ApplicationController
 
   def legal
   end
-
-  def help
-  end
 end
