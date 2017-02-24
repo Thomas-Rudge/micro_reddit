@@ -1,3 +1,19 @@
 <div class=sidebar>
+  <div class=login_box>
+    <%= form_for(:session, url: root_path) do |f| %>
 
+      <%= f.label :name %>
+      <%= f.email_field :name, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :remember_me, class: "remember_me" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me</span>
+      <% end %>
+
+      <%= f.submit "login", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
