@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224162133) do
+ActiveRecord::Schema.define(version: 20170303111043) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20170224162133) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "upvotes"
+    t.integer  "downvotes"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170224162133) do
     t.integer  "subreddit_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "upvotes"
+    t.integer  "downvotes"
     t.index ["subreddit_id"], name: "index_posts_on_subreddit_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -41,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170224162133) do
     t.boolean  "nsfw"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "mod"
     t.index ["name"], name: "index_subreddits_on_name", unique: true
   end
 
@@ -59,6 +64,9 @@ ActiveRecord::Schema.define(version: 20170224162133) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "remember_digest"
+    t.integer  "karma"
+    t.integer  "comment_karma"
+    t.integer  "post_karma"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index [nil], name: "index_users_on_user", unique: true
   end
