@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :users, only: [:destroy]
 
-  get    '/signup',    to: 'users#new'
-  post   '/signup',    to: 'users#create'
+  get  '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+
+  get '/user/:name', to: 'users#show'
 
   # Static pages
   get '/legal', to: 'static_pages#legal'

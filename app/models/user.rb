@@ -49,6 +49,10 @@ class User < ApplicationRecord
     BCrypt::Password.new(self.remember_digest).is_password?(token)
   end
 
+  def karma
+    post_karma + comment_karma
+  end
+
   private
 
     def downcase_name

@@ -1,0 +1,9 @@
+<% provide(:title, @user.nil? ? "Error" : @user.name) %>
+<% if @user.nil? %>
+  <%= render 'layouts/woops' %>
+<% else %>
+  <div class=main>
+    <div class=box>
+    </div>
+  </div>
+<% end %>

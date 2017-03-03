@@ -15,6 +15,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(name: params["name"])
+
+    unless @user
+      flash.now[:danger] = "Could not find user #{params["name"]}"
+    end
+  end
+
   def delete
   end
 

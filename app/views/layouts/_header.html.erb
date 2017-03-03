@@ -3,7 +3,9 @@
   <div class=access>
     <span>
       <% if logged_in? %>
-        <%= link_to current_user.name, current_user %>
+        <%= link_to current_user.name, "/user/#{current_user.name}" %>
+
+        (<%= current_user.karma %>)
          |
         <%= link_to "logout", logout_path %>
       <% else %>

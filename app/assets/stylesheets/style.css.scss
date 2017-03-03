@@ -58,10 +58,16 @@ body {
 
 .wrapper {
   @include shrink_wrap;
+  background: $body-blue;
   display: block;
   min-height: 100%;
   width: 100%;
   color: $dark-blue
+}
+
+.main-content {
+  border: none;
+  border-top: 1px solid $dark-blue;
 }
 
 .container {
@@ -198,8 +204,6 @@ nav {
   background: $body-blue;
 }
 
-
-
 .sidebar {
   @include shrink_wrap;
   display: table-cell;
@@ -269,6 +273,25 @@ nav {
       }
     }
   }
+}
+
+/* Flashes */
+
+.alert {
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 8px;
+  width: 50%;
+  text-align: center;
+  font-family: $content-font;
+  font-size: 12pt;
+
+}
+
+.alert-danger {
+  background: #FFAAAA;
+  border: 2px solid #801515;
+  color: #801515;
 }
 
 /* signup */
