@@ -2,9 +2,10 @@
   <h1><span>micro</span><%= link_to "reddit", root_path %></h1>
   <div class=access>
     <span>
-      <% if false %>
-        <%= "User name and karma" %>
-        <%= link_to "logout", "#" %>
+      <% if logged_in? %>
+        <%= link_to current_user.name, current_user %>
+         |
+        <%= link_to "logout", logout_path %>
       <% else %>
         <%= "Want to join?" %>
         <%= link_to "login or signup ", signup_path %>

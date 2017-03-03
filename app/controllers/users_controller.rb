@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if verify_recaptcha(model: @user) && @user.save
-      login(@user)
+      log_in @user
       redirect_to root_url
     else
       render "new"

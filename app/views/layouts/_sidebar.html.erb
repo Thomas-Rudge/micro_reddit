@@ -7,9 +7,9 @@
   </div>
   <% unless logged_in? %>
     <div class=login_box>
-      <%= form_for(:session, url: root_path) do |f| %>
+      <%= form_for(:session, url: login_path) do |f| %>
         <div class=login1>
-          <%= f.email_field :name, placeholder: 'username' %>
+          <%= f.text_field :name, placeholder: 'username' %>
 
           <%= f.password_field :password, placeholder: 'password' %>
         </div>
