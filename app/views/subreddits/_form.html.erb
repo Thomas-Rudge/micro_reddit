@@ -1,0 +1,34 @@
+<%= form_for(@subreddit, url: yield(:form_path)) do |f| %>
+  <% if @subreddit.errors.any? %>
+    <div id=error_explanation>
+      <div class=alert>
+        The form contains <%= pluralize(@subreddit.errors.full_messages.uniq.count, "error") %>.
+      </div>
+      <ul>
+        <% @subreddit.errors.full_messages.uniq.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% unless @subreddit.created_at? %>
+    <%= f.label :name %>
+    <span>Only letters, numbers, and underscores, permitted. The name cannot be changed once created.</span>
+    <%= f.text_field :name, class: 'form-control' %>
+  <% end %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control' %>
+
+  <%= f.label :sidebar %>
+  <span>This appears on the sidebar of your subreddits page.</span>
+  <%= f.text_area :sidebar, class: 'form-control' %>
+
+  <%= f.label :nsfw, class: "checkbox" do %>
+    <%= f.check_box :nsfw %>
+    <span>NSFW (Mature content)</span>
+  <% end %>
+
+  <%= f.submit yield(:button) %>
+
+<% end %>

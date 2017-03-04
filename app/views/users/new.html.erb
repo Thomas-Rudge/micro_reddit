@@ -1,7 +1,8 @@
 <% provide(:title, "Sign-up") %>
 <div class=main>
   <div class=box>
-    <%= form_for(@user, url: yield(:form_path)) do |f| %>
+    <h3>Create a User</h3>
+    <%= form_for(@user, url: signup_path) do |f| %>
       <% if @user.errors.any? %>
         <div id=error_explanation>
           <div class=alert>

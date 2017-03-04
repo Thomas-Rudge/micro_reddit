@@ -1,17 +1,20 @@
 <div class=sidebar>
   <div class=search_box>
-    <%= form_for(:search, url: '#') do |f| %>
-      <%= f.text_field :search, class: 'search_text', placeholder: 'search' %>
+    <%= form_for(:search, url: "#") do |f| %>
+      <%= f.text_field :search, class: "search_text", placeholder: "search" %>
       <%= f.submit "\u26B2", class: "search_btn" %>
     <% end %>
   </div>
-  <% unless logged_in? %>
+  <% if logged_in? %>
+    <%= link_to "Submit a new post", "#", class: "big_link" %>
+    <%= link_to "Create your own subreddit", subreddits_create_path, class: "big_link" %>
+  <% else %>
     <div class=login_box>
       <%= form_for(:session, url: login_path) do |f| %>
         <div class=login1>
-          <%= f.text_field :name, placeholder: 'username' %>
+          <%= f.text_field :name, placeholder: "username" %>
 
-          <%= f.password_field :password, placeholder: 'password' %>
+          <%= f.password_field :password, placeholder: "password" %>
         </div>
         <div class=login2>
           <%= f.label :remember_me, class: "remember_me" do %>

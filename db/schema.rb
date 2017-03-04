@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303115305) do
+ActiveRecord::Schema.define(version: 20170304112340) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170303115305) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "mod"
+    t.text     "sidebar"
     t.index ["name"], name: "index_subreddits_on_name", unique: true
   end
 

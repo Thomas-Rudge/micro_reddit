@@ -10,8 +10,6 @@ class User < ApplicationRecord
 
   BAD_NAME_REGEX  = /![\w_-]/
 
-  before_save { name.downcase! }
-
   validates :name, presence: true,
                    length: { in: 2..20 },
                    format: { without: BAD_NAME_REGEX },
