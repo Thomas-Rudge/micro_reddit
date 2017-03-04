@@ -13,6 +13,8 @@ class SubredditsController < ApplicationController
 
     if @subreddit.save
       flash[:information] = "Subreddit successfully created!"
+      current_user.subreddits << @subreddit
+
       redirect_to "/r/#{@subreddit.name}"
     else
       render "new"

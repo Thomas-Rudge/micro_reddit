@@ -231,11 +231,11 @@ nav {
   display: table-cell;
   width: 300px;
   background: $body-blue;
+  font-family: $content-font;
 
   .search_box {
     form {
       margin: 4px 2px 6px 2px;
-      font-family: $content-font;
       font-size: 10pt;
 
       .search_input {
@@ -294,6 +294,12 @@ nav {
         margin: 4px 2px;
       }
     }
+  }
+
+  .sidebar_text {
+    margin: 5px;
+    font-size: 9pt;
+    color: $dark-blue;
   }
 }
 
