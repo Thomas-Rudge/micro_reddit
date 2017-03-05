@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
 
-  BAD_NAME_REGEX  = /![\w_-]/
+  BAD_NAME_REGEX  = /[^\w-]+/
 
   validates :name, presence: true,
                    length: { in: 2..20 },
@@ -49,6 +49,17 @@ class User < ApplicationRecord
 
   def karma
     post_karma + comment_karma
+  end
+
+  def to_s
+    puts "-" * 20
+    puts "ID: #{id}"
+    puts "Name: #{name}"
+    puts "Karma: #{self.karma}"
+    puts "  Comment-Karma: #{comment_karma}"
+    puts "  Post-Karma: #{post_karma}"
+    puts "Created: #{created_at}"
+    puts "Updated: #{updated_at}"
   end
 
   private
