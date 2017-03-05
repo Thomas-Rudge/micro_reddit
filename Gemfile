@@ -37,9 +37,10 @@ end
 
 group :test do
   gem 'guard'
-  gem 'faker',            '~> 1.6.1'
+  gem 'faker', branch: 'master' , git: 'https://github.com/stympy/faker.git'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
+  gem 'simplecov', :require => false
 end
 
 group :production do
