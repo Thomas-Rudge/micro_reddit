@@ -7,6 +7,9 @@
 # Ignore sensitive environment variables for captcha
 .env
 
+# Ignore coverage test data
+coverage/*
+
 # Ignore bundler config.
 /.bundle
 
