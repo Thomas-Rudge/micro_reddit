@@ -1,21 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Subreddit, type: :model do
-  let (:sub) { Subreddit.new(name: "learnruby",
-                             description: "This is a subreddit for people just learning Ruby and \
-                                           for Ruby experts looking to share their wisdom.",
-                             nsfw: false) }
 
-  context "the base subreddit" do
-    it "is valid" do
-      expect(sub.valid?).to be true
-    end
-  end
-  #########
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_length_of(:name) }
+  it { is_expected.to validate_presence_of(:mod) }
+  it { is_expected.to validate_inclusion_of(:nsfw).in_array([true, false]) }
+  it { is_expected.to validate_length_of(:description) }
+  it { is_expected.to validate_length_of(:sidebar) }
+  it { is_expected.to have_many(:posts) }
+  it { is_expected.to have_many(:subscriptions) }
+  it { is_expected.to have_many(:users).through(:subscriptions) }
+
+  ####
   # N A M E
   context "with a blank name" do
     it "is not valid" do
-      sub.name = " " * 10
+      sub = FactoryGirl.build(:subreddit, name: " " * 10)
 
       expect(sub.valid?).to be false
       expect(sub.errors.details[:name]).to be_an(Array)
@@ -25,7 +26,7 @@ RSpec.describe Subreddit, type: :model do
 
   context "with a name outside the valid length range" do
     it "cannot be too long" do
-      sub.name = "x" * 22
+      sub = FactoryGirl.build(:subreddit, name: "x" * 22)
 
       expect(sub.valid?).to be false
       expect(sub.errors.details[:name]).to be_an(Array)
@@ -33,7 +34,7 @@ RSpec.describe Subreddit, type: :model do
     end
 
     it "cannot be too short" do
-      sub.name = "x"
+      sub = FactoryGirl.build(:subreddit, name: "x")
 
       expect(sub.valid?).to be false
       expect(sub.errors.details[:name]).to be_an(Array)
@@ -43,8 +44,8 @@ RSpec.describe Subreddit, type: :model do
 
   context "with a name with non-word chars" do
     it "it will not be valid" do
-      ["le@rnruby", "p!cs", "scie/nce", "t-i-l"].each do |name|
-        sub.name = name
+      ["le@rnruby", "p!cs", "scie/nce", "t=i=l"].each do |name|
+        sub = FactoryGirl.build(:subreddit, name: name)
 
         expect(sub.valid?).to be false
         expect(sub.errors.details[:name]).to be_an(Array)
@@ -56,7 +57,7 @@ RSpec.describe Subreddit, type: :model do
   context "when the name is not all downcase" do
     it "will be saved in downcase" do
       varied_case_name = "LeaRnRubY"
-      sub.name = varied_case_name
+      sub = FactoryGirl.build(:subreddit, name: varied_case_name)
       sub.save
       sub.reload
 
@@ -66,6 +67,7 @@ RSpec.describe Subreddit, type: :model do
 
   context "when a duplicate name is given" do
     it "will mark the duplicate as invalid" do
+      sub = FactoryGirl.build(:subreddit)
       duplicate_sub = sub.dup
       duplicate_sub.name = sub.name.upcase
       sub.save
@@ -79,7 +81,7 @@ RSpec.describe Subreddit, type: :model do
 
   context "when a description is too long" do
     it "will not be valid" do
-      sub.description = "x" * 501
+      sub = FactoryGirl.build(:subreddit, description: "x" * 501)
 
       expect(sub.valid?).to be false
       expect(sub.errors.details[:description]).to be_an(Array)
@@ -92,7 +94,7 @@ RSpec.describe Subreddit, type: :model do
 
   context "when nsfw tag is blank" do
     it "will not be valid" do
-      sub.nsfw = nil
+      sub = FactoryGirl.build(:subreddit, nsfw: nil)
 
       expect(sub.valid?).to be false
       expect(sub.errors.details[:nsfw]).to be_an(Array)

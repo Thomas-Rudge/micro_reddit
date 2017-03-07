@@ -1,33 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let (:user) { User.create(name: "test",
-                            password: "password",
-                            password_confirmation: "password") }
 
-  let (:sub) { Subreddit.create(name: "testing",
-                                description: "For testing purposes",
-                                nsfw: false) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_length_of(:title) }
+  it { is_expected.to validate_presence_of(:post_type) }
+  it { is_expected.to validate_inclusion_of(:post_type).in_array([ 0, 1 ]) }
 
-  let (:post) { Post.new(title: "This is a test!",
-                         link: "http://www.reddit.com",
-                         post_text: "This is some text",
-                         post_type: 1,
-                         user_id: 1,
-                         subreddit_id: 1) }
-
-  context "the base post" do
-    it "will be valid" do
-      expect(post.valid?).to be true
-    end
-  end
+  it { is_expected.to have_many(:comments) }
+  it { is_expected.to belong_to(:subreddit).dependent(:destroy) }
+  it { is_expected.to belong_to(:user) }
 
   ###########
   # T I T L E
 
   context "when the title is blank" do
     it "will no be valid" do
-      post.title = " "
+      type = [true, false].sample ? :text_post : :link_post
+      post = FactoryGirl.build(type, title: "  ")
 
       expect(post.valid?).to be false
       expect(post.errors.details[:title]).to be_an(Array)
@@ -37,7 +27,9 @@ RSpec.describe Post, type: :model do
 
   context "when the title has escape characters" do
     it "will remove them before saving" do
-      post.title = "This is\na\test"
+      type = [true, false].sample ? :text_post : :link_post
+      post = FactoryGirl.build(type, title: "This is\na\test")
+
       post.save
       post.reload
 
@@ -47,7 +39,8 @@ RSpec.describe Post, type: :model do
 
   context "when the title is longer than 255 chars" do
     it "will not be valid" do
-      post.title = "x" * 256
+      type = [true, false].sample ? :text_post : :link_post
+      post = FactoryGirl.build(type, title: "x" * 256)
 
       expect(post.valid?).to be false
       expect(post.errors.details[:title]).to be_an(Array)
@@ -60,7 +53,8 @@ RSpec.describe Post, type: :model do
 
   context "when post type not 0 or 1" do
     it "will not be valid" do
-      post.post_type = 5
+      type = [true, false].sample ? :text_post : :link_post
+      post = FactoryGirl.build(type, post_type: 5)
 
       expect(post.valid?).to be false
       expect(post.errors.details[:post_type]).to be_an(Array)
@@ -74,8 +68,7 @@ RSpec.describe Post, type: :model do
   context "when post_type is 1" do
     context "when link is blank" do
       it "will not be valid" do
-        post.post_type = 1 # Explicit
-        post.link      = ""
+        post = FactoryGirl.build(:link_post, link: "")
 
         expect(post.valid?).to be false
         expect(post.errors.details[:link]).to be_an(Array)
@@ -86,8 +79,7 @@ RSpec.describe Post, type: :model do
 
     context "when link is not a valid URL" do
       it "will not be valid" do
-        post.post_type = 1 # Explicit
-        post.link      = "ftp://Not_valid"
+        post = FactoryGirl.build(:link_post, link: "ftp://Not_valid")
 
         expect(post.valid?).to be false
         expect(post.errors.details[:link]).to be_an(Array)
@@ -97,6 +89,7 @@ RSpec.describe Post, type: :model do
 
     context "when post_text is present" do
       it "is removed before saving" do
+        post = FactoryGirl.build(:link_post, post_text: "This is a test.")
         post.save
         post.reload
 
@@ -106,20 +99,9 @@ RSpec.describe Post, type: :model do
   end
 
   context "when post_type is 0" do
-    context "when the post_text is blank" do
-      it "will not be valid" do
-        post.post_type = 0
-        post.post_text = "   "
-
-        expect(post.valid?).to be false
-        expect(post.errors.details[:post_text]).to be_an(Array)
-        expect(post.errors.details[:post_text][0][:error]).to eql :blank
-      end
-    end
-
     context "when a link is present" do
       it "is removed before saving" do
-        post.post_type = 0
+        post = FactoryGirl.build(:text_post, link: "www.reddit.com")
         post.save
         post.reload
 

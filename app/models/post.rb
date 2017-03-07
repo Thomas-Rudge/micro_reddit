@@ -12,8 +12,6 @@ class Post < ApplicationRecord
   validates :link, format: { with: URI::regexp(["http", "https"]) },
                    presence: true, if: "post_type == 1"
 
-  validates :post_text, presence: true, if: "post_type == 0"
-
   validates :post_type, presence: true,
                         inclusion: { in: [ 0, 1 ] }
 
@@ -31,7 +29,7 @@ class Post < ApplicationRecord
     bad_chars_regex = /[\t|\n|\r|\f|\b|\a|\v]/
 
     self.title = self.title.gsub(bad_chars_regex, " ")
-    self.link  = self.link.gsub(bad_chars_regex, " ")
+    self.link  = self.link.gsub(bad_chars_regex, " ") unless self.link.nil?
     self.post_type == 0 ? self.link = nil : self.post_text = nil
   end
 end

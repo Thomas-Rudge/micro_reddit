@@ -24,6 +24,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails',        '~> 3.5'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'faker', branch: 'master' , git: 'https://github.com/stympy/faker.git'
   gem 'capybara',           '~> 2.5'
 end
 
@@ -37,7 +38,6 @@ end
 
 group :test do
   gem 'guard'
-  gem 'faker', branch: 'master' , git: 'https://github.com/stympy/faker.git'
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'database_cleaner', '~> 1.5'
   gem 'simplecov', :require => false
