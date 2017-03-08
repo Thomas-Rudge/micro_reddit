@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if verify_recaptcha(model: @user) && @user.save
+    if (Rails.env.development? && @user.save) ||
+       (verify_recaptcha(model: @user) && @user.save)
       log_in @user
       redirect_to root_url
     else

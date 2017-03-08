@@ -1,5 +1,6 @@
-<% provide(:title, @subreddit.name) %>
-<% provide(:sidebar_text, @subreddit.sidebar) %>
+<% provide(:title, @subreddit.name)               %>
+<% provide(:sidebar_text, @subreddit.sidebar)     %>
+<% provide(:moderator, @subreddit.moderator.name) %>
 <div class=main>
   <div class=box>
     <h3>r/<%= @subreddit.name %></h3>

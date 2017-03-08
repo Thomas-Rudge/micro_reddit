@@ -300,6 +300,7 @@ nav {
     margin: 5px;
     font-size: 9pt;
     color: $dark-blue;
+    white-space: pre;
   }
 }
 
@@ -322,6 +323,18 @@ nav {
     background: $dark-yellow;
   }
 
+}
+
+.mod_info {
+  @include shrink_wrap;
+  border: 1px solid $neutral-blue;
+  margin: 10px;
+  font-family: $content-font;
+  font-size: 8pt;
+
+  a {
+    text-decoration: none
+  }
 }
 
 /* Flashes */

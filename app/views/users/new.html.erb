@@ -25,7 +25,9 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= recaptcha_tags %>
+      <% if Rails.env.production? %>
+        <%= recaptcha_tags %>
+      <% end %>
 
       <%= f.submit "Signup" %>
     <% end %>

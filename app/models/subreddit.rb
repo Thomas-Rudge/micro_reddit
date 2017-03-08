@@ -3,6 +3,8 @@ class Subreddit < ApplicationRecord
   has_many :posts
   has_many :users, through: :subscriptions
 
+  attr_accessor :moderator
+
   BAD_NAME_REGEX  = /[^\w-]+/
 
   before_save { name.downcase! }
@@ -16,4 +18,8 @@ class Subreddit < ApplicationRecord
   validates :sidebar,     length: { maximum: 500 }
   validates :nsfw,        inclusion: { in: [ true, false ] }
   validates :mod,         presence: true
+
+  def moderator
+    @moderator ||= User.find(mod)
+  end
 end
