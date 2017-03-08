@@ -2,27 +2,23 @@ require 'rails_helper'
 
 FactoryGirl.factories.map(&:name).each do |factory_name|
   describe "The #{factory_name} factory" do
-     it 'is valid' do
-       next if factory_name == :post
-       if [:link_post, :text_post, :comment].include? factory_name && false
-         user = FactoryGirl.build(:user)
-         sub  = FactoryGirl.build(:subreddit)
-         user.save
-         sub.save
-         user.subreddits << sub
+    it 'is valid' do
+      if factory_name == :comment
+        post = FactoryGirl.create(:text_post)
+        factory = FactoryGirl.build(factory_name,
+                                    user_id: post.user.id,
+                                    post_id: post.id)
+      else
+        factory = FactoryGirl.build(factory_name)
+      end
 
-         if factory_name == :comment
-           post = FactoryGirl.build(:post, user_id: user.id, subreddit_id: sub.id)
-           post.save
+      unless factory.valid?
+        factory.errors.full_messages.each { |msg| puts msg }
+        factory.attributes.each { |key, val| puts "#{key} => #{val}"}
+      end
 
-           FactoryGirl.build(:comment, user_id: user.id, post_id: post.id).should be_valid
-         else
-           FactoryGirl.build(factory_name, user_id: user.id, subreddit_id: sub.id).should be_valid
-         end
-       else
-         FactoryGirl.build(factory_name).should be_valid
-       end
-     end
+      factory.should be_valid
+    end
   end
 end
 

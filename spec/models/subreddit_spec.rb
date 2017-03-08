@@ -5,7 +5,6 @@ RSpec.describe Subreddit, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_length_of(:name) }
   it { is_expected.to validate_presence_of(:mod) }
-  it { is_expected.to validate_inclusion_of(:nsfw).in_array([true, false]) }
   it { is_expected.to validate_length_of(:description) }
   it { is_expected.to validate_length_of(:sidebar) }
   it { is_expected.to have_many(:posts) }

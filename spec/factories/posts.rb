@@ -6,6 +6,8 @@ FactoryGirl.define do
     title        { Faker::Lorem.sentence }
     upvotes   { [*(0...3500)].sample }
     downvotes { [*(0...500)].sample }
+    post_type { 0 }
+    post_text { "Placeholder. Use 'text_post' or 'link_post' factories instead." }
 
     factory :text_post do
       post_type { 0 }
