@@ -14,15 +14,15 @@
   <% unless @subreddit.created_at? %>
     <%= f.label :name %>
     <span>Only letters, numbers, and underscores, permitted. The name cannot be changed once created.</span>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name %>
   <% end %>
 
   <%= f.label :description %>
-  <%= f.text_area :description, class: 'form-control' %>
+  <%= f.text_area :description %>
 
   <%= f.label :sidebar %>
   <span>This appears on the sidebar of your subreddits page.</span>
-  <%= f.text_area :sidebar, class: 'form-control' %>
+  <%= f.text_area :sidebar %>
 
   <%= f.label :nsfw, class: "checkbox" do %>
     <%= f.check_box :nsfw %>
