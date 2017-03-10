@@ -20,11 +20,11 @@ Rails.application.routes.draw do
   get    '/subreddits',              to: 'subreddits#index'
 
   get    '/submit',                to: 'posts#new'
-  post   '/submit',                to: 'post#create'
-  get    '/r/:subreddit_name/:id', to: 'post#show'
-  delete '/r/:subreddit_name/:id', to: 'post#destroy'
-  get    '/post/:id/edit',         to: 'post#edit'
-  post   '/post/:id/edit',         to: 'post#update'
+  post   '/submit',                to: 'posts#create'
+  get    '/r/:subreddit_name/:id', to: 'posts#show'
+  delete '/r/:subreddit_name/:id', to: 'posts#destroy'
+  get    '/post/:id/edit',         to: 'posts#edit'
+  post   '/post/:id/edit',         to: 'posts#update'
 
 
   # Static pages

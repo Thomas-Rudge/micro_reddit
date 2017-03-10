@@ -1,17 +1,28 @@
 module MetaDatasHelper
   include PostsHelper
 
-  def get_url_title(url)
+  def get_metadata(url)
     return url if url.blank?
-
-    url  = add_scheme_to_link(URI.parse(url))
-    html = get_html(url)
+    data = {title: "", thumbnail: ""}
 
     begin
-      Nokogiri::HTML(html).title
+      url  = add_scheme_to_link(URI.parse(url))
+      html = Nokogiri::HTML(get_html(url))
+      data[:title] = html.title
+
+      if url.to_s.downcase =~ /[\.jpg|\.jpeg|\.gif|\.png|\.bmp]\z/
+        data[:thumbnail] = url.to_s
+      else
+        ["thumbnail", "og:image", "twitter:image"].each do |tag|
+          data[:thumbnail] = html.at(%Q{meta[@property="#{tag}"]}).to_h['content']
+          break unless data[:thumbnail].nil?
+        end
+      end
     rescue
-      ""
+      data = {title: "", thumbnail: ""}
     end
+
+    data
   end
 
   def toggle_http_ssl(url)

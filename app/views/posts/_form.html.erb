@@ -11,8 +11,10 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label :link %>
-  <%= f.text_field :link %>
+  <div id=post_link_box>
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </div>
 
   <div class=dynamic_title>
     <span id=suggested_title></span>
@@ -22,11 +24,15 @@
   <%= f.label :title %>
   <%= f.text_field :title %>
 
-  <%= f.label :post_text %>
-  <%= f.text_area :post_text %>
+  <div id=post_text_box>
+    <%= f.label :post_text %>
+    <%= f.text_area :post_text %>
+  </div>
 
   <%= f.label "Subreddit" %>
   <%= f.text_field :sub ,value: @referer %>
+
+  <%= hidden_field_tag 'post[thumbnail]' %>
 
   <%= f.submit yield(:button) %>
 <% end %>

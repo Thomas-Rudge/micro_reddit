@@ -4,10 +4,12 @@ RSpec.describe MetaDatasHelper, type: :helper do
   describe "#get_url_title" do
     it "will return the title of a webpage" do
       title = "A Test Title"
-      html = "<!DOCTYPE html><html><head><title>#{title}</title></head><body></body></html>"
+      image = "http://host/thumbnail.jpg"
+      html = %Q{<!DOCTYPE html><html><head><title>#{title}</title>
+<meta property="og:image" content="#{image}"></head><body></body></html>}
       allow_any_instance_of(MetaDatasHelper).to receive(:get_html).and_return(html)
 
-      expect(get_url_title("http://www.test.com")).to eql title
+      expect(get_metadata("http://www.test.com")).to include(:title=>title, :thumbnail=>image)
     end
   end
 end
