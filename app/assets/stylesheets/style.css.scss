@@ -358,7 +358,7 @@ nav {
 
 /* signup */
 
-.new_user, .new_subreddit {
+.new_user, .new_subreddit, .new_post {
   @include shrink_wrap;
   margin-left: 25%;
   margin-top: 40px;

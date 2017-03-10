@@ -1,0 +1,32 @@
+<%= form_for(@post, url: yield(:form_path)) do |f| %>
+  <% if @post.errors.any? %>
+    <div id=error_explanation>
+      <div class=alert>
+        The form contains <%= pluralize(@post.errors.full_messages.uniq.count, "error") %>.
+      </div>
+      <ul>
+        <% @post.errors.full_messages.uniq.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :link %>
+  <%= f.text_field :link %>
+
+  <div class=dynamic_title>
+    <span id=suggested_title></span>
+    <span id=use_suggested_title>use suggested title</span>
+  </div>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :post_text %>
+  <%= f.text_area :post_text %>
+
+  <%= f.label "Subreddit" %>
+  <%= f.text_field :sub ,value: @referer %>
+
+  <%= f.submit yield(:button) %>
+<% end %>

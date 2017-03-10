@@ -3,7 +3,9 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :subreddit, dependent: :destroy
 
-  before_validation :process_given_link
+  attr_accessor :sub
+
+  before_validation :process_link
   before_save :clean_up_post_for_database
 
   validates :title, presence: true,
@@ -17,19 +19,16 @@ class Post < ApplicationRecord
 
   protected
 
-  def process_given_link
-    return if self.link.blank?
-
-    if URI.parse(self.link).scheme.nil?
-      self.link = "http://#{self.link}"
+    def process_link
+      return link if link.blank?
+      self.link = add_scheme_to_link(URI.parse(self.link)).to_s
     end
-  end
 
-  def clean_up_post_for_database
-    bad_chars_regex = /[\t|\n|\r|\f|\b|\a|\v]/
+    def clean_up_post_for_database
+      bad_chars_regex = /[\t|\n|\r|\f|\b|\a|\v]/
 
-    self.title = self.title.gsub(bad_chars_regex, " ")
-    self.link  = self.link.gsub(bad_chars_regex, " ") unless self.link.nil?
-    self.post_type == 0 ? self.link = nil : self.post_text = nil
-  end
+      self.title = self.title.gsub(bad_chars_regex, " ")
+      self.link  = self.link.gsub(bad_chars_regex, " ") unless self.link.nil?
+      self.post_type == 0 ? self.link = nil : self.post_text = nil
+    end
 end

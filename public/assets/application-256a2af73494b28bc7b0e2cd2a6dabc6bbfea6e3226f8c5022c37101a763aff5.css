@@ -1,0 +1,901 @@
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+
+/* Document
+   ========================================================================== */
+
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+
+figcaption,
+figure,
+main { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+
+details, /* 1 */
+menu {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Scripting
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+canvas {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in IE.
+ */
+
+template {
+  display: none;
+}
+
+/* Hidden
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10-.
+ */
+
+[hidden] {
+  display: none;
+}
+@font-face {
+  font-family: 'varela_roundregular';
+  src: url(/assets/fonts/VarelaRound-Regular-webfont-3d3caca595a9fbe4e1d8effb60cb122335f47bc804512420d80ebbb0dde9c86c.eot);
+  src: url(/assets/fonts/VarelaRound-Regular-webfont-3d3caca595a9fbe4e1d8effb60cb122335f47bc804512420d80ebbb0dde9c86c.eot?#iefix) format("embedded-opentype"), url(/assets/fonts/VarelaRound-Regular-webfont-67feead462747c0b1f6d34ea8cb9f01dd0052d22911f1b36bc6333214bef2796.woff) format("woff"), url(/assets/fonts/VarelaRound-Regular-webfont-650dc565ba3a86e421f77ca3aace4bd97bd17f71921eaa8022f7690317148a72.ttf) format("truetype"), url(/assets/fonts/VarelaRound-Regular-webfont-fc9c186868d7dee06bbc29efbc20872f4825e0069ed3ee077106244697b52b63.svg#varela_roundregular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Variables */
+/* Mixins */
+/* Layout */
+/* line 47, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* line 52, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: #EDEFF8;
+  height: 100%;
+  z-index: 1;
+}
+
+/* line 59, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  margin: 15px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 14pt;
+  text-align: center;
+  font-weight: bold;
+  color: #4C5694;
+}
+
+/* line 69, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.wrapper {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: #EDEFF8;
+  display: block;
+  min-height: 100%;
+  width: 100%;
+  color: #2F397B;
+}
+
+/* line 78, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.main-content {
+  border: none;
+  border-top: 1px solid #2F397B;
+}
+
+/* line 83, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.container {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+  position: relative;
+}
+
+/* line 89, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+#error_explanation {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 11pt;
+  color: #202020;
+}
+
+/* Header */
+/* line 97, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.header {
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+  display: block;
+  height: 55px;
+  background: #A0A6CF;
+  z-index: 99;
+}
+
+/* line 106, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+h1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: inline-block;
+  font-family: varela_roundregular, "Andale Mono", "Avant Garde", "Century Gothic", Tahoma, sans-serif;
+  font-size: 36pt;
+  font-weight: bold;
+  background: transparent;
+  margin: 5px;
+  text-shadow: 1px 1px 1px #777;
+}
+/* line 117, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+h1 a {
+  text-decoration: none;
+  color: #202020;
+}
+/* line 122, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+h1 span {
+  ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -ms-transform-origin: left bottom 0;
+  -moz-transform-origin: left bottom 0;
+  -webkit-transform-origin: left bottom 0;
+  transform-origin: left bottom 0;
+  color: #FE1728;
+  display: inline-block;
+  position: relative;
+  right: -35px;
+  bottom: 5px;
+  font-size: 12pt;
+  -webkit-text-stroke: 1px black;
+  text-shadow: none;
+}
+
+/* line 135, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+nav {
+  display: inline-block;
+}
+/* line 138, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+nav ul {
+  display: table-row;
+  list-style-type: none;
+}
+/* line 142, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+nav ul li {
+  font-family: verdana, arial, helvetica, sans-serif;
+  display: table-cell;
+}
+/* line 146, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+nav ul li a {
+  text-decoration: none;
+}
+
+/* line 153, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.access {
+  font-family: verdana, arial, helvetica, sans-serif;
+  padding: 5px;
+  background: #FFF297;
+  border-top-left-radius: 7px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+/* line 163, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.access span {
+  font-size: 10pt;
+}
+/* line 166, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.access span a {
+  text-decoration: none;
+  color: #2F397B;
+}
+/* line 170, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.access span a:hover {
+  color: #010415;
+  text-shadow: 1px 1px 1px #A0A6CF;
+}
+
+/* footer */
+/* line 180, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.footer {
+  font-family: verdana, arial, helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+  background: #EDEFF8;
+  color: #888;
+  overflow: hidden;
+}
+/* line 188, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.footer span {
+  font-size: 9pt;
+  margin: 10px;
+  float: left;
+}
+/* line 194, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.footer nav {
+  font-size: 9pt;
+  margin: 10px;
+  float: right;
+}
+/* line 200, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.footer a {
+  text-decoration: none;
+  color: #2F397B;
+}
+/* line 204, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.footer a:hover {
+  color: #B3A334;
+}
+
+/* main */
+/* line 213, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.field_with_errors input {
+  border: 2px solid #FE1728;
+}
+
+/* line 218, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.main {
+  height: 100%;
+  display: table;
+  width: 100%;
+}
+
+/* line 224, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.box {
+  display: table-cell;
+  background: #EDEFF8;
+}
+
+/* line 229, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: table-cell;
+  width: 300px;
+  background: #EDEFF8;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+/* line 237, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .search_box form {
+  margin: 4px 2px 6px 2px;
+  font-size: 10pt;
+}
+/* line 241, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .search_box form .search_input {
+  width: 200px;
+}
+/* line 245, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .search_box form .search_text {
+  display: inline-block;
+  width: 90%;
+  margin-right: -10px;
+}
+/* line 251, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .search_box form .search_btn {
+  ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -ms-transform-origin: left bottom 0;
+  -moz-transform-origin: left bottom 0;
+  -webkit-transform-origin: left bottom 0;
+  transform-origin: left bottom 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  border: none;
+  font-size: 12pt;
+  line-height: 2;
+  cursor: pointer;
+  width: initial;
+}
+/* line 261, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .search_box form .search_btn:focus {
+  border: none;
+  outline: none;
+}
+/* line 269, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .login_box {
+  border: 1px #888 solid;
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 10pt;
+}
+/* line 277, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .login_box .login1 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: inline-flex;
+}
+/* line 281, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .login_box .login1 input {
+  margin: 4px 2px;
+  padding: 0;
+  width: 130px;
+}
+/* line 288, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .login_box .login2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: inline-flex;
+}
+/* line 292, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .login_box .login2 label, .sidebar .login_box .login2 input, .sidebar .login_box .login2 span {
+  display: inline-block;
+  margin: 4px 2px;
+}
+/* line 299, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sidebar .sidebar_text {
+  margin: 5px;
+  font-size: 9pt;
+  color: #2F397B;
+  white-space: pre;
+}
+
+/* line 307, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.big_link {
+  background: #FFF297;
+  border: 2px solid #B3A334;
+  color: #2F397B;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
+  margin: 8px;
+  padding: 8px;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 8px;
+  text-decoration: none;
+}
+/* line 322, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.big_link:hover {
+  background: #B3A334;
+}
+
+/* line 328, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.mod_info {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border: 1px solid #4C5694;
+  margin: 10px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 8pt;
+}
+/* line 335, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.mod_info a {
+  text-decoration: none;
+}
+
+/* Flashes */
+/* line 342, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.alert {
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 8px;
+  width: 50%;
+  text-align: center;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12pt;
+}
+
+/* line 353, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.alert-danger {
+  background: #FFAAAA;
+  border: 2px solid #801515;
+  color: #801515;
+}
+
+/* signup */
+/* line 361, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user, .new_subreddit, .new_post {
+  margin: 0;
+  padding: 0;
+  border: none;
+  margin-left: 25%;
+  margin-top: 40px;
+  width: 50%;
+  display: block;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+/* line 369, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user label, .new_subreddit label, .new_post label {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+/* line 375, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user label span, .new_subreddit label span, .new_post label span {
+  display: inline-block;
+}
+/* line 380, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user input[type=text], .new_subreddit input[type=text], .new_post input[type=text] {
+  display: block;
+  width: 100%;
+}
+/* line 385, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user input[type=checkbox], .new_subreddit input[type=checkbox], .new_post input[type=checkbox] {
+  display: inline-block;
+}
+/* line 389, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user input[type=submit], .new_subreddit input[type=submit], .new_post input[type=submit] {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 11pt;
+  margin: 10px;
+  padding: 6px;
+}
+/* line 396, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user span, .new_subreddit span, .new_post span {
+  display: block;
+  color: #888;
+  font-size: 9pt;
+}
+/* line 402, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user textarea, .new_subreddit textarea, .new_post textarea {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+ */
+

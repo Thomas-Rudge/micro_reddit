@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <% if logged_in? %>
-    <%= link_to "Submit a new post", "#", class: "big_link" %>
+    <%= link_to "Submit a new post", submit_path, class: "big_link" %>
     <%= link_to "Create your own subreddit", subreddits_create_path, class: "big_link" %>
   <% else %>
     <div class=login_box>
