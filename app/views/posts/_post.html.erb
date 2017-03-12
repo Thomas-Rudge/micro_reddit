@@ -15,18 +15,18 @@
   </div>
   <div class=post_details>
     <div class=post_title>
-      <span class=title_text><%= @post.title %></span>
+      <%= link_to @post.title, @post.link, class: "title_text" %>
       <% if @post.post_type == 0 %>
         <span class=title_host>(self.<%= @subreddit.name %>)</span>
       <% else %>
-        <span class=title_host>(<%= URI.parse(@post.link).host rescue "" %>)</span>
+        <span class=title_host> - (<%= URI.parse(@post.link).host rescue "" %>)</span>
       <% end %>
     </div>
     <div class=post_meta>
       <span>Submitted <%= time_ago_in_words(@post.created_at) %> ago by </span>
       <%= link_to yield(:poster), "/user/#{yield(:poster)}" %>
     </div>
-
+    <%= link_to pluralize(@post.comment_count, "comment"), "/r/#{@subreddit.name}/#{@post.id}" %>
   </div>
 
 </div>
