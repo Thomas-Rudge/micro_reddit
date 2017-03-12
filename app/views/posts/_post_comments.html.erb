@@ -11,9 +11,7 @@
            | <b><%= comment.karma %></b> points
            | <%= time_ago_in_words(comment.created_at) %> agos
         </span>
-        <span class=comment_content>
-          <%= comment.content %>
-        </span>
+        <span class=comment_content><%= comment.content %></span>
       </div>
     </li>
   <% end %>

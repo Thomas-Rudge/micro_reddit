@@ -1,5 +1,8 @@
 <% provide(:title, @post.nil? ? "Pot not found" : @post.title) %>
 <% provide(:moderator, @subreddit.nil? ? "" : @subreddit.moderator.name) %>
+<% unless @post.nil? %>
+  <% provide(:poster, @post.user.name) %>
+<% end %>
 
 <div class=main>
   <div class=box>

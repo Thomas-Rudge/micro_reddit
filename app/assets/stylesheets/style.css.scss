@@ -42,6 +42,14 @@ $micro-red:    #FE1728;
   border: none;
 }
 
+@mixin pre_wrap {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
 /* Layout */
 
 html {
@@ -297,10 +305,10 @@ nav {
   }
 
   .sidebar_text {
+    @include pre_wrap;
     margin: 5px;
     font-size: 9pt;
     color: $dark-blue;
-    white-space: pre;
   }
 }
 
@@ -358,6 +366,48 @@ nav {
   }
 }
 
+.post_comment_list {
+  @include shrink_wrap;
+  padding-left: 20px;
+}
+
+.post {
+  @include shrink_wrap;
+  display: block;
+  padding: 31px 10px 20px 30px;
+
+  .thumbnail_box {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 8px;
+
+    .post_thumbnail {
+      width: 70px;
+      height: auto;
+      overflow: hidden;
+    }
+  }
+
+  .post_details {
+    display: table-cell;
+    vertical-align: top;
+
+    .post_title {
+      font-size: 12pt;
+    }
+
+    .post_meta {
+      font-size: 9pt;
+      padding: 5px 0;
+      color: $text-grey;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 .comment {
   padding: 10px;
 
@@ -374,10 +424,10 @@ nav {
     }
 
     .comment_content {
+      @include pre_wrap;
       display: block;
       font-size: 11pt;
       padding: 5px 0;
-      white-space: pre;
     }
   }
 }
@@ -387,11 +437,12 @@ nav {
   padding: 0 10px 0 5px;
   font-weight: bold;
   font-size: 13pt;
-  cursor: pointer;
   color: $text-grey;
+  text-align: center;
 
   .upvote, .downvote {
     display: block;
+    cursor: pointer;
 
     &:hover {
       color: $neutral-blue;

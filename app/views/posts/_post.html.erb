@@ -1,3 +1,32 @@
 <div class=post>
-  Placeholder for POST.
+  <div class=votes>
+    <span class=upvote data="p<%= @post.id %>">&#8613;</span>
+    <span id=p<%= @post.id %> class=karma><%= @post.karma %></span>
+    <span class=downvote data="p<%= @post.id %>">&#8615;</span>
+  </div>
+  <div class=thumbnail_box>
+    <% if @post.post_type == 0 %>
+      <%= image_tag @post.thumbnail, class: 'post_thumbnail' %>
+    <% else %>
+      <%= link_to @post.link do %>
+        <%= image_tag @post.thumbnail, class: 'post_thumbnail' %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class=post_details>
+    <div class=post_title>
+      <span class=title_text><%= @post.title %></span>
+      <% if @post.post_type == 0 %>
+        <span class=title_host>(self.<%= @subreddit.name %>)</span>
+      <% else %>
+        <span class=title_host>(<%= URI.parse(@post.link).host rescue "" %>)</span>
+      <% end %>
+    </div>
+    <div class=post_meta>
+      <span>Submitted <%= time_ago_in_words(@post.created_at) %> ago by </span>
+      <%= link_to yield(:poster), "/user/#{yield(:poster)}" %>
+    </div>
+
+  </div>
+
 </div>

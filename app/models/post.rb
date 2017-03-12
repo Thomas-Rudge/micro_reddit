@@ -19,6 +19,10 @@ class Post < ApplicationRecord
   validates :post_type, presence: true,
                         inclusion: { in: [ 0, 1 ] }
 
+  def karma
+    self.upvotes - self.downvotes
+  end
+
   protected
 
     def process_link

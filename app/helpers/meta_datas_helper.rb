@@ -57,10 +57,8 @@ module MetaDatasHelper
   end
 
   def set_thumbnail_for_image_links(url)
-    if url.host.ends_with? "imgur.com"
-      url = url.to_s.gsub(IMG_REGEX, "s#{$1}")
-    elsif url.host.ends_with? "flickr.com"
-      url = url.to_s.gsub(IMG_REGEX, "t#{$1}")
+    if (url.host.ends_with? "imgur.com") || (url.host.ends_with? "flickr.com")
+      url = url.to_s.gsub(IMG_REGEX, "s#{$1}") #imgur 90x90, Flickr 75x75
     end
 
     url.to_s
