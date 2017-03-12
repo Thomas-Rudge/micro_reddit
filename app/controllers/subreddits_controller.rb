@@ -23,6 +23,9 @@ class SubredditsController < ApplicationController
 
   def show
     @subreddit = Subreddit.find_by(name: params[:name])
+    if @subreddit.nil?
+      flash.now[:information] = "r/#{params[:name]} doesn't exist.\nWhy don't you create it?"
+    end
   end
 
   def edit

@@ -1,0 +1,16 @@
+<% provide(:title, @post.nil? ? "Pot not found" : @post.title) %>
+<% provide(:moderator, @subreddit.nil? ? "" : @subreddit.moderator.name) %>
+
+<div class=main>
+  <div class=box>
+    <% unless @post.nil? | @subreddit.nil? %>
+      <%= render 'post' %>
+      <%= render 'comment_form' %>
+      <ul class=post_comment_list>
+        <%= render 'post_comments' %>
+      </ul>
+    <% end %>
+  </div>
+  <%= render "shared/sidebar" %>
+</div>
+

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  TEXTPOST_THUMBNAIL = "http://i.imgur.com/vKvm5pe.jpg"
+
   def new
     @post = Post.new
     @referer = referring_subreddit(request.headers["HTTP_REFERER"])
@@ -12,6 +14,7 @@ class PostsController < ApplicationController
       @post.subreddit_id = sub_id
       @post.user_id      = current_user.id
       @post.post_type    = post_type(params[:post][:link])
+      @post.thumbnail    = TEXTPOST_THUMBNAIL if @post.post_type == 0
 
       if @post.save
         redirect_to "/r/#{sub}/#{@post.id}"
@@ -24,22 +27,26 @@ class PostsController < ApplicationController
     end
   end
 
-  private
+  def show
+    @post = Post.find(params[:id]) rescue nil
+    @subreddit = Subreddit.find_by(name: params[:subreddit_name])
 
-    def referring_subreddit(referer)
-      num = referer =~ /\/r\/*/
-
-      referer = num.nil? ? "" : referer[num+3..-1]
+    if @post.nil? || @subreddit.nil?
+      flash.now[:information] = "If this post existed, it doesn't anymore. Sorry ¯\\_(ツ)_/¯"
+    else
+      @comments = Comment.where(post_id: @post.id).
+                          order("upvotes DESC").
+                          includes(:user)#.
+                          #paginate(page: params[:page], per_page: 50)
     end
+  end
+
+  private
 
     def post_params
       params.require(:post).permit(:link,
                                    :title,
-                                   :post_text)
-    end
-
-    def post_type(link)
-      # 1 = link post, 0 = text post
-      link.blank? ? 0 : 1
+                                   :post_text,
+                                   :thumbnail)
     end
 end

@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def karma
-    post_karma + comment_karma
+    self.post_karma + self.comment_karma
   end
 
   def to_s

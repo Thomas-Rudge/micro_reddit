@@ -58,6 +58,7 @@ body {
 
 div, a, li, span, input {
   font-family: $content-font;
+  list-style-type: none;
 }
 
 h3 {
@@ -357,6 +358,47 @@ nav {
   }
 }
 
+.comment {
+  padding: 10px;
+
+  .comment_box {
+    display: table-cell;
+
+    .comment_header {
+      display: block;
+      font-size: 10pt;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .comment_content {
+      display: block;
+      font-size: 11pt;
+      padding: 5px 0;
+      white-space: pre;
+    }
+  }
+}
+
+.votes {
+  display: table-cell;
+  padding: 0 10px 0 5px;
+  font-weight: bold;
+  font-size: 13pt;
+  cursor: pointer;
+  color: $text-grey;
+
+  .upvote, .downvote {
+    display: block;
+
+    &:hover {
+      color: $neutral-blue;
+    }
+  }
+}
+
 /* Flashes */
 
 .alert {
@@ -366,13 +408,18 @@ nav {
   width: 50%;
   text-align: center;
   font-size: 12pt;
-
 }
 
 .alert-danger {
   background: #FFAAAA;
   border: 2px solid #801515;
   color: #801515;
+}
+
+.alert-information {
+  background: #FFF8AA;
+  border: 2px solid #807215;
+  color: #584E01;
 }
 
 /* signup */
