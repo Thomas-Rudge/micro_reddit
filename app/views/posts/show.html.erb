@@ -8,7 +8,9 @@
   <div class=box>
     <% unless @post.nil? | @subreddit.nil? %>
       <%= render 'post' %>
-      <%= render 'comment_form' %>
+      <% if logged_in? %>
+        <%= render 'comment_form' %>
+      <% end %>
       <ul class=post_comment_list>
         <%= render 'post_comments' %>
       </ul>
@@ -17,3 +19,4 @@
   <%= render "shared/sidebar" %>
 </div>
 
+<%= javascript_include_tag 'karma_ajax', 'data-turbolinks-track': 'reload' %>

@@ -5,7 +5,7 @@
       <% provide(:sidebar_text, @subreddit.sidebar)     %>
       <% provide(:moderator, @subreddit.moderator.name) %>
 
-      <h3>r/<%= subreddit.name %></h3>
+      <h3>r/<%= @subreddit.name %></h3>
     <% end %>
   </div>
   <%= render "shared/sidebar" %>

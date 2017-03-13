@@ -17,7 +17,7 @@ class SubredditsController < ApplicationController
 
       redirect_to "/r/#{@subreddit.name}"
     else
-      render "new"
+      render :new
     end
   end
 
