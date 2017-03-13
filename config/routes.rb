@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get    '/post/:id/edit',         to: 'posts#edit'
   post   '/post/:id/edit',         to: 'posts#update'
 
+  post   '/karma',                 to: 'karma#update'
 
   # Static pages
   get '/legal', to: 'static_pages#legal'
