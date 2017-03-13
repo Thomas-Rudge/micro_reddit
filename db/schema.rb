@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312194142) do
+ActiveRecord::Schema.define(version: 20170313205952) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20170312194142) do
     t.integer  "comment_karma",   default: 0
     t.integer  "post_karma",      default: 0
     t.index ["name"], name: "index_users_on_name", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id",      null: false
+    t.integer "subject_type", null: false
+    t.integer "subject_id",   null: false
+    t.integer "vote",         null: false
+    t.index ["user_id"], name: "index_votes_on_user_id", unique: true
   end
 
 end

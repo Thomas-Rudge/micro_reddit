@@ -1,0 +1,12 @@
+votes
+  subject_type
+    0 - post
+    1 - comment
+  vote
+    0 - down
+    1 - up
+
+posts
+  post_type
+    0 - text post
+    1 - link post

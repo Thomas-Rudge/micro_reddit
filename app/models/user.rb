@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :posts
   has_many :comments
+  has_many :votes
   has_many :subreddits, through: :subscriptions
 
   before_save :downcase_name
