@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get    '/post/:id/edit',         to: 'posts#edit'
   post   '/post/:id/edit',         to: 'posts#update'
 
+  post   '/r/:subreddit_name/:post_id/comment', to: 'comments#create'
+
   post   '/karma',                 to: 'karma#update'
 
   # Static pages

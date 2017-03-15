@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :destroy
   belongs_to :user
-  belongs_to :post, dependent: :destroy
+  belongs_to :post
 
   validates :content, length: { in: 1..1_000 }
 
