@@ -34,10 +34,28 @@ class PostsController < ApplicationController
     if @post.nil? || @subreddit.nil?
       flash.now[:information] = "If this post existed, it doesn't anymore. Sorry ¯\\_(ツ)_/¯"
     else
-      @comments = Comment.where(post_id: @post.id).
-                          order("upvotes DESC").
-                          includes(:user)#.
-                          #paginate(page: params[:page], per_page: 50)
+      @comments = @post.comments.order("upvotes DESC").includes(:user)
+                               #.paginate(page: params[:page], per_page: 50)
+      if logged_in?
+        @post_vote      = @post.votes.where(user_id: current_user.id, comment_id: nil)
+        comm_votes      = @post.votes.where(user_id: current_user.id).where.not(comment_id: nil)
+        @comments_votes = Hash.new
+
+        if @post_vote.empty?
+          @post_vote = ""
+        elsif @post_vote[0].vote == 0
+          @post_vote = " downvoted"
+        else
+          @post_vote = " upvoted"
+        end
+
+        comm_votes.each do |vote|
+          @comments_votes[vote.comment_id] = vote.vote
+        end
+      else
+        @post_vote = ""
+        @comments_votes = {}
+      end
     end
   end
 

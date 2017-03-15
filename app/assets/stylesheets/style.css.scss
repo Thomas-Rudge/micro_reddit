@@ -22,6 +22,8 @@ $dark-yellow:  #B3A334;
 $logo-grey:    #202020;
 $text-grey:    #888;
 $micro-red:    #FE1728;
+$upvoted:      #FF4601;
+$downvoted:    #1831B5;
 
 /* Mixins */
 
@@ -478,6 +480,13 @@ nav {
       color: $neutral-blue;
     }
   }
+  .upvoted {
+    color: $upvoted;
+  }
+
+  .downvoted {
+    color: $downvoted;
+  }
 }
 
 /* Flashes */
@@ -551,3 +560,6 @@ nav {
   }
 }
 
+.bold {
+  font-weight: bold;
+}

@@ -2,13 +2,21 @@
   <% @comments.each do |comment| %>
     <li class=comment>
       <div class=votes>
-        <span class=upvote data="c<%= comment.id %>">&#8613;</span>
-        <span class=downvote data="c<%= comment.id %>">&#8615;</span>
+        <% if @comments_votes[comment.id].nil? %>
+          <span id=uc<%= comment.id %> data=<%= @post.id %> class=upvote>&#8613;</span>
+          <span id=dc<%= comment.id %> data=<%= @post.id %> class=downvote>&#8615;</span>
+        <% elsif @comments_votes[comment.id] == 0 %>
+          <span id=uc<%= comment.id %> data=<%= @post.id %> class=upvote>&#8613;</span>
+          <span id=dc<%= comment.id %> data=<%= @post.id %> class='downvote downvoted'>&#8615;</span>
+        <% else %>
+          <span id=uc<%= comment.id %> data=<%= @post.id %> class='upvote upvoted'>&#8613;</span>
+          <span id=dc<%= comment.id %> data=<%= @post.id %> class=downvote>&#8615;</span>
+        <% end %>
       </div>
       <div class=comment_box>
         <span class=comment_header>
-          <b><%= link_to comment.user.name, "/user/#{comment.user.name}" %></b>
-           | <b><%= comment.karma %></b> points
+          <span class=bold><%= link_to comment.user.name, "/user/#{comment.user.name}" %></span>
+           | <span id=kc<%= comment.id %> class=bold><%= comment.karma %></span> points
            | <%= time_ago_in_words(comment.created_at) %> agos
         </span>
         <span class=comment_content><%= comment.content %></span>

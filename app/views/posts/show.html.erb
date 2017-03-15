@@ -1,4 +1,4 @@
-<% provide(:title, @post.nil? ? "Pot not found" : @post.title) %>
+<% provide(:title, @post.nil? ? "Pot not found" : "micro-reddit | #{@post.title}") %>
 <% provide(:moderator, @subreddit.nil? ? "" : @subreddit.moderator.name) %>
 <% unless @post.nil? %>
   <% provide(:poster, @post.user.name) %>
@@ -18,5 +18,3 @@
   </div>
   <%= render "shared/sidebar" %>
 </div>
-
-<%= javascript_include_tag 'karma_ajax', 'data-turbolinks-track': 'reload' %>
