@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315075405) do
+ActiveRecord::Schema.define(version: 20170315192112) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -42,14 +42,16 @@ ActiveRecord::Schema.define(version: 20170315075405) do
   end
 
   create_table "subreddits", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                            null: false
     t.text     "description"
     t.boolean  "nsfw"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "mod"
     t.text     "sidebar"
+    t.integer  "subscriptions_count", default: 0
     t.index ["name"], name: "index_subreddits_on_name", unique: true
+    t.index ["subscriptions_count"], name: "index_subreddits_on_subscriptions_count"
   end
 
   create_table "subscriptions", force: :cascade do |t|
