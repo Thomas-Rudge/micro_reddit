@@ -3,6 +3,7 @@
 
 <div class=main>
   <div class=box>
+    <%= link_to "r/#{@subreddit.name}", "/r/#{@subreddit.name}", class: "sub_link" %>
     <% unless @post.nil? | @subreddit.nil? %>
       <%= render partial: "shared/post", locals: {post: @post} %>
       <% if logged_in? %>
