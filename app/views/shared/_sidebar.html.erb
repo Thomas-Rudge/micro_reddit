@@ -29,7 +29,7 @@
   <% end %>
   <div class="sidebar_text">
     <%= yield(:sidebar_text) %>
-    <% if controller_name == "subreddits" %>
+    <% if (["subreddits", "posts"].include? controller_name) && !yield(:moderator).blank? %>
       <div class=mod_info>
         Moderator: <%= link_to yield(:moderator), "/user/#{yield(:moderator)}" %>
       </div>
