@@ -68,6 +68,7 @@ module MetaDatasHelper
     num = referer =~ /\/r\/*/
 
     referer = num.nil? ? "" : referer[num+3..-1]
+    referer.split("/")[0]
   end
 
   def post_type(link)
