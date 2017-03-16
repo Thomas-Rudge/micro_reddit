@@ -1,4 +1,4 @@
 class Subscription < ApplicationRecord
-  belongs_to :user,      dependent: :destroy
-  belongs_to :subreddit, dependent: :destroy
+  belongs_to :user
+  belongs_to :subreddit, counter_cache: true
 end

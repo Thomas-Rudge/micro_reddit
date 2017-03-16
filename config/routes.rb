@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post   '/subreddits/edit/:name',   to: 'subreddits#update'
   delete '/subreddits/delete/:name', to: 'subreddits#destroy'
   get    '/subreddits',              to: 'subreddits#index'
+  get    '/r',                       to: 'subreddits#index'
 
   get    '/submit',                to: 'posts#new'
   post   '/submit',                to: 'posts#create'
@@ -28,7 +29,10 @@ Rails.application.routes.draw do
 
   post   '/r/:subreddit_name/:post_id/comment', to: 'comments#create'
 
-  post   '/karma',                 to: 'karma#update'
+  post   '/subscribe',   to: 'subscriptions#create'
+  post   '/unsubscribe', to: 'subscriptions#destroy'
+
+  post   '/karma',                 to: 'votes#update'
 
   # Static pages
   get '/legal', to: 'static_pages#legal'
