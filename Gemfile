@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder',   '~> 2.5'
 gem 'bcrypt',     '~> 3.1.11'
 gem 'humanizer',  '~> 2.6.3'
+gem 'will_paginate', '3.1.0'
 gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do

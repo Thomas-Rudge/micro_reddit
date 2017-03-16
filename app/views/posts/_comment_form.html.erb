@@ -1,0 +1,4 @@
+<%= form_for(:comment, url: "/r/#{@subreddit.name}/#{@post.id}/comment", html:{class: "comment_form"}) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit "Comment" %>
+<% end %>

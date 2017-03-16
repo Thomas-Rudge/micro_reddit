@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <% if logged_in? %>
-    <%= link_to "Submit a new post", "#", class: "big_link" %>
+    <%= link_to "Submit a new post", submit_path, class: "big_link" %>
     <%= link_to "Create your own subreddit", subreddits_create_path, class: "big_link" %>
   <% else %>
     <div class=login_box>
@@ -29,7 +29,7 @@
   <% end %>
   <div class="sidebar_text">
     <%= yield(:sidebar_text) %>
-    <% if controller_name == "subreddits" %>
+    <% if (["subreddits", "posts"].include? controller_name) && !yield(:moderator).blank? %>
       <div class=mod_info>
         Moderator: <%= link_to yield(:moderator), "/user/#{yield(:moderator)}" %>
       </div>

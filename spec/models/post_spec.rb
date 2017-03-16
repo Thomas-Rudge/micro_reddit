@@ -109,4 +109,16 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  context "when an invalid thumbnail is given" do
+    it "will be made valid at save" do
+      post = FactoryGirl.build(:text_post, thumbnail: "fttp://invalid.net")
+      post.save
+      post.reload
+
+      reloaded_thumbnail = URI.parse(post.thumbnail)
+
+      expect(reloaded_thumbnail).to be_kind_of(URI::HTTP)
+    end
+  end
 end

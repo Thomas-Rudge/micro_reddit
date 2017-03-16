@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
+  has_many :votes,         dependent: :destroy
   has_many :posts
   has_many :comments
   has_many :subreddits, through: :subscriptions
@@ -48,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def karma
-    post_karma + comment_karma
+    self.post_karma + self.comment_karma
   end
 
   def to_s

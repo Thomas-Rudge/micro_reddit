@@ -5,7 +5,7 @@
       <% if logged_in? %>
         <%= link_to current_user.name, "/user/#{current_user.name}" %>
 
-        (<%= current_user.karma %>)
+        (<span class=bold><%= current_user.post_karma %> - <%= current_user.comment_karma %></span>)
          |
         <%= link_to "logout", logout_path %>
       <% else %>

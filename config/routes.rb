@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/user/:name', to: 'users#show'
 
+  get '/post_title', to: 'meta_datas#get_title'
+
   get    '/r/:name',                 to: 'subreddits#show'
   get    '/subreddits/create',       to: 'subreddits#new'
   post   '/subreddits/create',       to: 'subreddits#create'
@@ -16,6 +18,21 @@ Rails.application.routes.draw do
   post   '/subreddits/edit/:name',   to: 'subreddits#update'
   delete '/subreddits/delete/:name', to: 'subreddits#destroy'
   get    '/subreddits',              to: 'subreddits#index'
+  get    '/r',                       to: 'subreddits#index'
+
+  get    '/submit',                to: 'posts#new'
+  post   '/submit',                to: 'posts#create'
+  get    '/r/:subreddit_name/:id', to: 'posts#show'
+  delete '/r/:subreddit_name/:id', to: 'posts#destroy'
+  get    '/post/:id/edit',         to: 'posts#edit'
+  post   '/post/:id/edit',         to: 'posts#update'
+
+  post   '/r/:subreddit_name/:post_id/comment', to: 'comments#create'
+
+  post   '/subscribe',   to: 'subscriptions#create'
+  post   '/unsubscribe', to: 'subscriptions#destroy'
+
+  post   '/karma',                 to: 'votes#update'
 
   # Static pages
   get '/legal', to: 'static_pages#legal'

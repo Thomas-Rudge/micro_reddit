@@ -1,0 +1,51 @@
+<% vote = @votes[post.id]     %>
+<% if vote == 0               %>
+<%   post_vote = " downvoted" %>
+<% elsif vote == 1            %>
+<%   post_vote = " upvoted"   %>
+<% else                       %>
+<%   post_vote = ""           %>
+<% end                        %>
+
+<div class=post>
+  <div class=votes>
+    <span id=up<%= post.id %> data="-1" class='upvote<%= post_vote unless post_vote == " downvoted" %>'>&#8613;</span>
+    <span id=kp<%= post.id %> data="-1" class='karma<%= post_vote %>'><%= post.karma %></span>
+    <span id=dp<%= post.id %> data="-1" class='downvote<%= post_vote unless post_vote == " upvoted" %>'>&#8615;</span>
+  </div>
+  <div class=thumbnail_box>
+    <% if post.post_type == 0 %>
+      <%= image_tag post.thumbnail, class: 'post_thumbnail' %>
+    <% else %>
+      <%= link_to post.link do %>
+        <%= image_tag post.thumbnail, class: 'post_thumbnail' %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class=post_details>
+    <div class=post_title>
+      <%= link_to post.title, post.link, class: "title_text" %>
+      <% if post.post_type == 0 %>
+        <% if @subreddit.nil? %>
+          <span class=title_host>(self.<%= post.subreddit.name %>)</span>
+        <% else %>
+          <span class=title_host>(self.<%= @subreddit.name %>)</span>
+        <% end %>
+      <% else %>
+        <span class=title_host> - (<%= URI.parse(post.link).host rescue "" %>)</span>
+      <% end %>
+    </div>
+    <div class=post_meta>
+      <span>Submitted <%= time_ago_in_words(post.created_at) %> ago by </span>
+      <%= link_to post.user.name, "/user/#{post.user.name}" %>
+      <% if controller_name == "front_pages" %>
+        to <%= link_to "r/#{post.subreddit.name}", "/r/#{post.subreddit.name}" %>
+      <% end %>
+    </div>
+    <% if @subreddit.nil? %>
+      <%= link_to pluralize(post.comment_count, "comment"), "/r/#{post.subreddit.name}/#{post.id}" %>
+    <% else %>
+      <%= link_to pluralize(post.comment_count, "comment"), "/r/#{@subreddit.name}/#{post.id}" %>
+    <% end %>
+  </div>
+</div>

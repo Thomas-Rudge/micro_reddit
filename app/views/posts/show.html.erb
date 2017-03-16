@@ -1,0 +1,17 @@
+<% provide(:title, @post.nil? ? "Pot not found" : "micro-reddit | #{@post.title}") %>
+<% provide(:moderator, @subreddit.nil? ? "" : @subreddit.moderator.name) %>
+
+<div class=main>
+  <div class=box>
+    <% unless @post.nil? | @subreddit.nil? %>
+      <%= render partial: "shared/post", locals: {post: @post} %>
+      <% if logged_in? %>
+        <%= render 'comment_form' %>
+      <% end %>
+      <ul class=post_comment_list>
+        <%= render 'post_comments' %>
+      </ul>
+    <% end %>
+  </div>
+  <%= render "shared/sidebar" %>
+</div>
