@@ -15,8 +15,12 @@ class PostsController < ApplicationController
       @post.user_id      = current_user.id
       @post.post_type    = post_type(params[:post][:link])
       @post.thumbnail    = TEXTPOST_THUMBNAIL if @post.post_type == 0
+      @post.upvotes      = 1
 
       if @post.save
+        Vote.new(user_id: current_user.id, post_id: @post.id, vote: 1).save
+        User.find(current_user.id).increment!(:post_karma)
+
         redirect_to "/r/#{sub}/#{@post.id}"
       else
         render :new
@@ -35,26 +39,22 @@ class PostsController < ApplicationController
       flash.now[:information] = "If this post existed, it doesn't anymore. Sorry ¯\\_(ツ)_/¯"
     else
       @comments = @post.comments.order("upvotes DESC").includes(:user)
-                               #.paginate(page: params[:page], per_page: 50)
-      if logged_in?
-        @post_vote      = @post.votes.where(user_id: current_user.id, comment_id: nil)
-        comm_votes      = @post.votes.where(user_id: current_user.id).where.not(comment_id: nil)
-        @comments_votes = Hash.new
+                                .paginate(page: params[:page], per_page: 30)
 
-        if @post_vote.empty?
-          @post_vote = ""
-        elsif @post_vote[0].vote == 0
-          @post_vote = " downvoted"
-        else
-          @post_vote = " upvoted"
+      @comments_votes = Hash.new
+      @votes          = Hash.new
+      if logged_in?
+        post_votes = @post.votes.where(user_id: current_user.id, comment_id: nil)
+        comm_votes = @post.votes.where(user_id: current_user.id).where.not(comment_id: nil)
+
+
+        post_votes.each do |vote|
+          @votes[vote.post_id] = vote.vote
         end
 
         comm_votes.each do |vote|
           @comments_votes[vote.comment_id] = vote.vote
         end
-      else
-        @post_vote = ""
-        @comments_votes = {}
       end
     end
   end

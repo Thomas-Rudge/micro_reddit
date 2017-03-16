@@ -27,6 +27,8 @@
       <%= link_to yield(:poster), "/user/#{yield(:poster)}" %>
     </div>
     <%= link_to pluralize(@post.comment_count, "comment"), "/r/#{@subreddit.name}/#{@post.id}" %>
+    <% if controller_name == "posts" && @post.post_type == 0 && !@post.post_text.blank? %>
+      <div class=post_text_box><%= @post.post_text %></div>
+    <% end %>
   </div>
-
 </div>
