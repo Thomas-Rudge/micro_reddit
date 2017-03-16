@@ -1,7 +1,7 @@
 class Subreddit < ApplicationRecord
-  has_many :subscriptions
-  has_many :posts
-  has_many :users, through: :subscriptions
+  has_many :subscriptions, dependent: :destroy
+  has_many :posts,         dependent: :destroy
+  has_many :users,         through: :subscriptions
 
   attr_accessor :moderator
 
