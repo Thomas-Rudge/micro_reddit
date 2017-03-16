@@ -13,7 +13,7 @@
   <% end %>
   <% unless @subreddit.created_at? %>
     <%= f.label :name %>
-    <span>Only letters, numbers, and underscores, permitted. The name cannot be changed once created.</span>
+    <span>Only letters, numbers, and underscores, permitted.<br/>The name cannot be changed once created.</span>
     <%= f.text_field :name %>
   <% end %>
 

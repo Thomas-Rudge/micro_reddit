@@ -1,0 +1,29 @@
+<% provide(:title, "Subreddits") %>
+<div class=main>
+  <div class=box>
+    <h3>Subreddits</h3>
+    <% @subreddits.each do |sub| %>
+      <div class=sub>
+        <% if @subscriptions && (@subscriptions.include? sub.id) %>
+          <span class='unsubscribe button' data=<%= sub.id %>>unsubscribe</span>
+        <% elsif logged_in? %>
+          <span class='subscribe button' data=<%= sub.id %>>subscribe</span>
+        <% end %>
+        <div class=sub_details>
+          <%= link_to "r/#{sub.name}", "/r/#{sub.name}" %>
+          <% if sub.nsfw %>
+            <span class=nsfw>NSFW</span>
+          <% end %>
+          <span class=sub_description><%= sub.description %></span>
+          <div class=sub_meta>
+            <span class=bold><%= number_with_delimiter(sub.subscriptions_count) %> subscribers</span>
+            , a community for <%= time_ago_in_words(sub.created_at) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= will_paginate @subreddits %>
+  </div>
+  <%= render "shared/sidebar" %>
+</div>

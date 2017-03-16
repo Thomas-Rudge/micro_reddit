@@ -1,11 +1,15 @@
+<% provide(:title, @subreddit.nil? ? "Error" : @subreddit.name) %>
 <div class=main>
   <div class=box>
     <% unless @subreddit.nil? %>
-      <% provide(:title, @subreddit.name)               %>
       <% provide(:sidebar_text, @subreddit.sidebar)     %>
       <% provide(:moderator, @subreddit.moderator.name) %>
 
       <h3>r/<%= @subreddit.name %></h3>
+
+      <% @posts.each do |post| %>
+        <%= render partial: "shared/post", locals: {post: post} %>
+      <% end %>
     <% end %>
   </div>
   <%= render "shared/sidebar" %>
