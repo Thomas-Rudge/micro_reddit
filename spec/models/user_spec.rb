@@ -13,7 +13,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_secure_password }
   it { is_expected.to have_many(:posts) }
   it { is_expected.to have_many(:comments) }
-  it { is_expected.to have_many(:subscriptions) }
+  it { is_expected.to have_many(:votes).dependent(:destroy) }
+  it { is_expected.to have_many(:subscriptions).dependent(:destroy) }
   it { is_expected.to have_many(:subreddits).through(:subscriptions) }
 
   ##########

@@ -1,15 +1,27 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PostsHelper. For example:
-#
-# describe PostsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe PostsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#add_scheme_to_link" do
+    let (:https_link)      { URI.parse("https://www.reddit.com") }
+    let (:http_link)       { URI.parse("http://www.reddit.com") }
+    let (:halfscheme_link) { URI.parse("//www.reddit.com") }
+    let (:schemeless_link) { URI.parse("www.reddit.com") }
+
+    it "will return a URI object" do
+      expect(add_scheme_to_link https_link).to be_kind_of(URI)
+    end
+
+    it "will not change complete links" do
+      expect(add_scheme_to_link https_link).to eql https_link
+      expect(add_scheme_to_link http_link).to  eql http_link
+    end
+
+    it "will add http scheme to incomplete links" do
+      expect(add_scheme_to_link halfscheme_link).to eql http_link
+      expect(add_scheme_to_link schemeless_link).to eql http_link
+    end
+  end
+
+  describe "#subreddit_id_from_name" do
+  end
 end

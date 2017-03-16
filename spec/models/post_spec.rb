@@ -7,8 +7,9 @@ RSpec.describe Post, type: :model do
   it { is_expected.to validate_presence_of(:post_type) }
   it { is_expected.to validate_inclusion_of(:post_type).in_array([ 0, 1 ]) }
 
-  it { is_expected.to have_many(:comments) }
-  it { is_expected.to belong_to(:subreddit).dependent(:destroy) }
+  it { is_expected.to have_many(:votes).dependent(:destroy) }
+  it { is_expected.to have_many(:comments).dependent(:destroy) }
+  it { is_expected.to belong_to(:subreddit) }
   it { is_expected.to belong_to(:user) }
 
   ###########

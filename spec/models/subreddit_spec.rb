@@ -7,8 +7,9 @@ RSpec.describe Subreddit, type: :model do
   it { is_expected.to validate_presence_of(:mod) }
   it { is_expected.to validate_length_of(:description) }
   it { is_expected.to validate_length_of(:sidebar) }
-  it { is_expected.to have_many(:posts) }
-  it { is_expected.to have_many(:subscriptions) }
+
+  it { is_expected.to have_many(:posts).dependent(:destroy) }
+  it { is_expected.to have_many(:subscriptions).dependent(:destroy) }
   it { is_expected.to have_many(:users).through(:subscriptions) }
 
   ####

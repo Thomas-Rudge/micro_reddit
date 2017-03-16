@@ -4,7 +4,8 @@ RSpec.describe Comment, type: :model do
 
   it { is_expected.to validate_length_of(:content) }
 
-  it { is_expected.to belong_to(:post).dependent(:destroy) }
+  it { is_expected.to have_many(:votes).dependent(:destroy) }
+  it { is_expected.to belong_to(:post) }
   it { is_expected.to belong_to(:user) }
 
   context "an empty comment" do
