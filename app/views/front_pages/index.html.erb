@@ -1,7 +1,13 @@
 <% provide(:title, "Frontpage") %>
 <% provide(:sidebar_text, "") %>
+
 <div class=main>
   <div class=box>
+    <% @posts.each do |post| %>
+      <%= render partial: "shared/post", locals: {post: post} %>
+    <% end %>
+
+    <%= will_paginate @posts %>
   </div>
   <%= render "shared/sidebar" %>
 </div>
