@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('turbolinks:load', function() {
   var typingTimer;
   var doneTypingInterval = 1500;
   var $linkInput = $('#post_link');
