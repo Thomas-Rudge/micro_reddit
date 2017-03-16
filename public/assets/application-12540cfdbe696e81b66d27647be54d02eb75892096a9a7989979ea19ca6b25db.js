@@ -12188,24 +12188,141 @@ var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationDat
 
 }).call(this);
 $(document).ready(function() {
-  $('#new_post').css({'background':'red'});
-  $('#post_link').change(getTitle(this.val));
-  $(h3).click(alert("This is doing something"))
 
-  var getTitle = function(url){
+  var updateKarma = function(objectDetails, karma) {
+    var type = {"c": "comment", "p": "post"}[objectDetails[1]];
+    var id = objectDetails.slice(2);
+    var postId = $('#'+objectDetails).attr('data');
 
-    $.get(
-      url: "/post_title",
-      data: {"url" : url},
-      success: updateTitle
-      dataType: String
-    );
+    $.post('/karma', {id: id, type: type, karma: karma, postid: postId}, function(data, status) {
+      console.log('Karma>'+karma);
+      if (status != 'success') {
+        return null;
+      };
+
+      var $upvoteSpan = $('#u'+objectDetails.slice(1));
+      var $downvoteSpan = $('#d'+objectDetails.slice(1));
+      var $karmaSpan = $('#k'+objectDetails.slice(1));
+      var points = parseInt($karmaSpan.text(), 10);
+      // If user clicks upvote with downvote highlighted, or
+      // visa-versa, the vote count should change by 2.
+      if ([1, -1].includes(karma)) {
+        if (karma == 1 && $downvoteSpan.hasClass('downvoted')){
+          points += 2;
+        } else if (karma == -1 && $upvoteSpan.hasClass('upvoted')){
+          points -= 2;
+        } else {
+          points += karma;
+        };
+      } else if (objectDetails[0] == 'u') {
+        --points;
+      } else {
+        ++points;
+      };
+      //
+      switch(karma) {
+        case 0: //Remove all highlighting
+          $upvoteSpan.removeClass('upvoted');
+          $downvoteSpan.removeClass('downvoted');
+          $karmaSpan.removeClass('upvoted downvoted');
+          break;
+        case 1: //Highlight upvote
+          $upvoteSpan.addClass('upvoted');
+          $karmaSpan.removeClass('downvoted');
+          $karmaSpan.addClass('upvoted');
+          $downvoteSpan.removeClass('downvoted');
+          break;
+        case -1: //Highlight downvote
+          $downvoteSpan.addClass('downvoted');
+          $karmaSpan.removeClass('upvoted');
+          $karmaSpan.addClass('downvoted');
+          $upvoteSpan.removeClass('upvoted');
+          break;
+      };
+      //Update points
+      $karmaSpan.text(points.toString());
+    });
   };
 
-  var updateTitle = function(data) {
-    $('#suggested_title').val(data);
+  $('.upvote').on('click', function(e) {
+    e.preventDefault();
+    if ($(e.target).hasClass('upvoted')) {
+      updateKarma(this.id, 0);
+    } else {
+      updateKarma(this.id, 1);
     };
-};
+  });
+
+  $('.downvote').on('click', function(e) {
+    e.preventDefault();
+    if ($(e.target).hasClass('downvoted')) {
+      updateKarma(this.id, 0);
+    } else {
+      updateKarma(this.id, -1);
+    };
+  });
+});
+(function() {
+
+
+}).call(this);
+$(document).ready(function() {
+  var typingTimer;
+  var doneTypingInterval = 1500;
+  var $linkInput = $('#post_link');
+  var $dynamicTitle = $('.dynamic_title');
+  var $postTextBox = $('#post_text_box');
+  var $postLinkBox = $('#post_link_box')
+  var $postText = $('#post_post_text');
+  var $suggestedTitle = $('#suggested_title');
+  var $postThumb = $('#post_thumbnail');
+  var $postTitle = $('#post_title')
+
+  $linkInput.on('input propertychange paste', function () {
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(nowFetchTitle, doneTypingInterval);
+  });
+
+  function nowFetchTitle(){
+    var link = $linkInput.val();
+
+    if (link == '') {
+      $dynamicTitle.slideUp();
+      $postTextBox.slideDown();
+    } else {
+      $.get('/post_title', {url : link}, function(data, status) {
+        if (status == 'success') {
+          if (data.title != '') {
+            $dynamicTitle.slideDown();
+            $suggestedTitle.text(data.title);
+            $postThumb.val(data.thumbnail);
+            $postTextBox.slideUp();
+          } else {
+            $suggestedTitle.text("");
+            $postThumb.val("");
+          };
+        };
+      });
+    };
+  };
+
+  $('#use_suggested_title').on('click', function(e) {
+    e.preventDefault();
+    var title = $suggestedTitle.text();
+    console.log('Title: ' + title)
+    $postTitle.val(title);
+  });
+
+  $postText.on('input propertychange paste', function() {
+    var postInput = $postText.val()
+
+    if (postInput == '') {
+      $postLinkBox.slideDown();
+    } else {
+      $postLinkBox.slideUp();
+    };
+  });
+});
 (function() {
 
 
@@ -12218,6 +12335,35 @@ $(document).ready(function() {
 
 
 }).call(this);
+(function() {
+
+
+}).call(this);
+$(document).ready(function() {
+  $('.unsubscribe').on('click', function(e) {
+    e.preventDefault();
+    var $target = $(e.target);
+    var id = $target.attr('data');
+    $.post('/unsubscribe', {id: id}, function(data, status) {
+      if (status == 'success') {
+        $target.removeClass('unsubscribe');
+        $target.addClass('subscribe');
+      };
+    });
+  });
+
+  $('.subscribe').on('click', function(e) {
+    e.preventDefault();
+    var $target = $(e.target);
+    var id = $target.attr('data');
+    $.post('/subscribe', {id: id}, function(data, status) {
+      if (status == 'success') {
+        $target.removeClass('subscribe');
+        $target.addClass('unsubscribe');
+      };
+    });
+  });
+});
 (function() {
 
 

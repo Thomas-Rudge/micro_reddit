@@ -470,7 +470,7 @@ template {
 /* Variables */
 /* Mixins */
 /* Layout */
-/* line 47, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 58, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 html {
   height: 100%;
   margin: 0;
@@ -478,7 +478,7 @@ html {
   border: none;
 }
 
-/* line 52, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 63, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 body {
   margin: 0;
   padding: 0;
@@ -488,7 +488,18 @@ body {
   z-index: 1;
 }
 
-/* line 59, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 70, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+div, a, li, span, input {
+  font-family: verdana, arial, helvetica, sans-serif;
+  list-style-type: none;
+}
+
+/* line 75, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+textarea {
+  border-radius: 5px;
+}
+
+/* line 79, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 h3 {
   margin: 0;
   padding: 0;
@@ -501,7 +512,7 @@ h3 {
   color: #4C5694;
 }
 
-/* line 69, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 89, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .wrapper {
   margin: 0;
   padding: 0;
@@ -513,13 +524,13 @@ h3 {
   color: #2F397B;
 }
 
-/* line 78, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 98, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .main-content {
   border: none;
   border-top: 1px solid #2F397B;
 }
 
-/* line 83, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 103, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .container {
   margin: 0;
   padding: 0;
@@ -528,15 +539,14 @@ h3 {
   position: relative;
 }
 
-/* line 89, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 109, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 #error_explanation {
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 11pt;
   color: #202020;
 }
 
 /* Header */
-/* line 97, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 116, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .header {
   margin: 0;
   padding: 0;
@@ -548,7 +558,7 @@ h3 {
   z-index: 99;
 }
 
-/* line 106, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 125, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 h1 {
   margin: 0;
   padding: 0;
@@ -561,12 +571,12 @@ h1 {
   margin: 5px;
   text-shadow: 1px 1px 1px #777;
 }
-/* line 117, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 136, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 h1 a {
   text-decoration: none;
   color: #202020;
 }
-/* line 122, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 141, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 h1 span {
   ms-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -586,28 +596,26 @@ h1 span {
   text-shadow: none;
 }
 
-/* line 135, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 154, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 nav {
   display: inline-block;
 }
-/* line 138, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 157, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 nav ul {
   display: table-row;
   list-style-type: none;
 }
-/* line 142, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 161, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 nav ul li {
-  font-family: verdana, arial, helvetica, sans-serif;
   display: table-cell;
 }
-/* line 146, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 164, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 nav ul li a {
   text-decoration: none;
 }
 
-/* line 153, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 171, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .access {
-  font-family: verdana, arial, helvetica, sans-serif;
   padding: 5px;
   background: #FFF297;
   border-top-left-radius: 7px;
@@ -616,25 +624,24 @@ nav ul li a {
   bottom: 0px;
   right: 0px;
 }
-/* line 163, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 180, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .access span {
   font-size: 10pt;
 }
-/* line 166, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 183, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .access span a {
   text-decoration: none;
   color: #2F397B;
 }
-/* line 170, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 187, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .access span a:hover {
   color: #010415;
   text-shadow: 1px 1px 1px #A0A6CF;
 }
 
 /* footer */
-/* line 180, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 197, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .footer {
-  font-family: verdana, arial, helvetica, sans-serif;
   margin: 0;
   padding: 0;
   border: none;
@@ -643,48 +650,48 @@ nav ul li a {
   color: #888;
   overflow: hidden;
 }
-/* line 188, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 204, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .footer span {
   font-size: 9pt;
   margin: 10px;
   float: left;
 }
-/* line 194, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 210, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .footer nav {
   font-size: 9pt;
   margin: 10px;
   float: right;
 }
-/* line 200, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 216, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .footer a {
   text-decoration: none;
   color: #2F397B;
 }
-/* line 204, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 220, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .footer a:hover {
   color: #B3A334;
 }
 
 /* main */
-/* line 213, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 229, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .field_with_errors input {
   border: 2px solid #FE1728;
 }
 
-/* line 218, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 234, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .main {
   height: 100%;
   display: table;
   width: 100%;
 }
 
-/* line 224, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 240, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .box {
   display: table-cell;
   background: #EDEFF8;
 }
 
-/* line 229, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 245, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar {
   margin: 0;
   padding: 0;
@@ -692,24 +699,23 @@ nav ul li a {
   display: table-cell;
   width: 300px;
   background: #EDEFF8;
-  font-family: verdana, arial, helvetica, sans-serif;
 }
-/* line 237, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 252, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .search_box form {
   margin: 4px 2px 6px 2px;
   font-size: 10pt;
 }
-/* line 241, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 256, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .search_box form .search_input {
   width: 200px;
 }
-/* line 245, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 260, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .search_box form .search_text {
   display: inline-block;
   width: 90%;
   margin-right: -10px;
 }
-/* line 251, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 266, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .search_box form .search_btn {
   ms-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -729,12 +735,12 @@ nav ul li a {
   cursor: pointer;
   width: initial;
 }
-/* line 261, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 276, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .search_box form .search_btn:focus {
   border: none;
   outline: none;
 }
-/* line 269, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 284, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .login_box {
   border: 1px #888 solid;
   display: block;
@@ -743,45 +749,48 @@ nav ul li a {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 10pt;
 }
-/* line 277, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 292, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .login_box .login1 {
   margin: 0;
   padding: 0;
   border: none;
   display: inline-flex;
 }
-/* line 281, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 296, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .login_box .login1 input {
   margin: 4px 2px;
   padding: 0;
   width: 130px;
 }
-/* line 288, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 303, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .login_box .login2 {
   margin: 0;
   padding: 0;
   border: none;
   display: inline-flex;
 }
-/* line 292, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 307, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .login_box .login2 label, .sidebar .login_box .login2 input, .sidebar .login_box .login2 span {
   display: inline-block;
   margin: 4px 2px;
 }
-/* line 299, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 314, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .sidebar .sidebar_text {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
   margin: 5px;
   font-size: 9pt;
   color: #2F397B;
-  white-space: pre;
 }
 
-/* line 307, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 322, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .big_link {
   background: #FFF297;
   border: 2px solid #B3A334;
   color: #2F397B;
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 12pt;
   font-weight: bold;
   text-align: center;
@@ -792,95 +801,346 @@ nav ul li a {
   border-radius: 8px;
   text-decoration: none;
 }
-/* line 322, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 336, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .big_link:hover {
   background: #B3A334;
 }
 
-/* line 328, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 342, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .mod_info {
   margin: 0;
   padding: 0;
   border: none;
   border: 1px solid #4C5694;
   margin: 10px;
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 8pt;
 }
-/* line 335, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 348, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .mod_info a {
   text-decoration: none;
 }
 
+/* line 353, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.dynamic_title {
+  padding: 5px;
+  margin: 2px;
+  background: white;
+  border-radius: 8px;
+  display: none;
+}
+/* line 360, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.dynamic_title #suggested_title {
+  font-size: 11pt;
+}
+/* line 364, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.dynamic_title #use_suggested_title {
+  margin: 10px 0 5px 10px;
+  font-size: 9pt;
+  cursor: pointer;
+  color: #202020;
+}
+/* line 370, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.dynamic_title #use_suggested_title:hover {
+  color: #2F397B;
+}
+
+/* line 376, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post_comment_list {
+  margin: 0;
+  padding: 0;
+  border: none;
+  padding-left: 20px;
+}
+
+/* line 381, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+  padding: 31px 10px 20px 30px;
+}
+/* line 386, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .thumbnail_box {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0 8px;
+}
+/* line 391, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .thumbnail_box .post_thumbnail {
+  width: 70px;
+  height: auto;
+  overflow: hidden;
+}
+/* line 398, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details {
+  display: table-cell;
+  vertical-align: top;
+}
+/* line 402, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details a {
+  color: #888;
+  font-size: 9pt;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* line 408, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details a:hover {
+  text-decoration: underline;
+}
+/* line 412, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details a:visited {
+  color: #888;
+}
+/* line 419, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details .post_title .title_text {
+  color: #2F397B;
+  font-size: 11pt;
+  font-weight: normal;
+}
+/* line 426, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details .post_title:hover {
+  text-decoration: none;
+}
+/* line 431, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details .title_host {
+  font-size: 8pt;
+  color: #888;
+}
+/* line 436, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details .post_meta {
+  font-size: 9pt;
+  padding: 5px 0 0 0;
+  color: #888;
+}
+/* line 441, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details .post_meta a {
+  text-decoration: none;
+}
+/* line 446, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.post .post_details .post_text_box {
+  border: 1px solid #A0A6CF;
+  background: #F5F5F5;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 5px;
+  font-size: 10pt;
+  white-space: pre-wrap;
+}
+
+/* line 458, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment {
+  padding: 10px;
+}
+/* line 461, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment .comment_box {
+  display: table-cell;
+}
+/* line 464, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment .comment_box .comment_header {
+  display: block;
+  font-size: 10pt;
+}
+/* line 468, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment .comment_box .comment_header a {
+  text-decoration: none;
+}
+/* line 473, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment .comment_box .comment_content {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  display: block;
+  font-size: 11pt;
+  padding: 5px 0;
+}
+
+/* line 482, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment_form {
+  margin: 0 0 10px 40px;
+  padding: 0;
+  display: block;
+}
+/* line 487, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment_form textarea {
+  display: inherit;
+  width: 300px;
+  height: 100px;
+}
+/* line 493, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.comment_form input {
+  display: inherit;
+  margin: 7px;
+  font-size: 10pt;
+}
+
+/* line 500, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.votes {
+  display: table-cell;
+  padding: 0 10px 0 5px;
+  font-weight: bold;
+  font-size: 13pt;
+  color: #888;
+  text-align: center;
+}
+/* line 508, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.votes .upvote, .votes .downvote {
+  display: block;
+  cursor: pointer;
+}
+/* line 512, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.votes .upvote:hover, .votes .downvote:hover {
+  color: #4C5694;
+}
+/* line 516, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.votes .upvoted {
+  color: #FF4601;
+}
+/* line 520, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.votes .downvoted {
+  color: #1831B5;
+}
+
+/* line 525, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub {
+  margin: 5px 10px 5px 30px;
+  padding: 0;
+  display: inline-flex;
+}
+/* line 530, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .button {
+  display: table;
+  align-self: flex-start;
+  text-decoration: none;
+  margin: 3px 10px 3px 0;
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 9pt;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* line 542, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .subscribe {
+  border: 1px solid #2F397B;
+  color: #2F397B;
+  background: #D7DBE9;
+}
+/* line 548, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .unsubscribe {
+  border: 1px solid #550000;
+  color: #550000;
+  background: #FFAAAA;
+}
+/* line 555, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .sub_details a {
+  color: #2F397B;
+  font-weight: bold;
+  font-size: 12pt;
+  text-decoration: none;
+}
+/* line 561, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .sub_details a:visited {
+  color: #2F397B;
+}
+/* line 566, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .sub_details .nsfw {
+  display: inline-block;
+  padding: 2px;
+  border: 1px solid red;
+  border-radius: 4px;
+  font-size: 7pt;
+  color: red;
+}
+/* line 575, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .sub_details .sub_description {
+  display: block;
+  margin: 5px 0;
+  font-size: 11pt;
+}
+/* line 581, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.sub .sub_details .sub_meta {
+  font-size: 9pt;
+  color: #555;
+}
+
 /* Flashes */
-/* line 342, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 590, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .alert {
   margin: 10px auto;
   padding: 5px;
   border-radius: 8px;
   width: 50%;
   text-align: center;
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 12pt;
 }
 
-/* line 353, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 599, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .alert-danger {
   background: #FFAAAA;
   border: 2px solid #801515;
   color: #801515;
 }
 
+/* line 605, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.alert-information {
+  background: #FFF8AA;
+  border: 2px solid #807215;
+  color: #584E01;
+}
+
 /* signup */
-/* line 361, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 613, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user, .new_subreddit, .new_post {
   margin: 0;
   padding: 0;
   border: none;
-  margin-left: 25%;
-  margin-top: 40px;
-  width: 50%;
-  display: block;
-  font-family: verdana, arial, helvetica, sans-serif;
+  display: table;
+  margin: 40px auto;
 }
-/* line 369, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 618, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user label, .new_subreddit label, .new_post label {
   display: inline-block;
-  width: 100%;
   margin-bottom: 5px;
   margin-top: 15px;
 }
-/* line 375, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 623, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user label span, .new_subreddit label span, .new_post label span {
   display: inline-block;
 }
-/* line 380, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
-.new_user input[type=text], .new_subreddit input[type=text], .new_post input[type=text] {
+/* line 628, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.new_user input[type=text], .new_user input[type=password], .new_subreddit input[type=text], .new_subreddit input[type=password], .new_post input[type=text], .new_post input[type=password] {
   display: block;
-  width: 100%;
+  width: 250px;
 }
-/* line 385, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 633, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user input[type=checkbox], .new_subreddit input[type=checkbox], .new_post input[type=checkbox] {
   display: inline-block;
 }
-/* line 389, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 637, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user input[type=submit], .new_subreddit input[type=submit], .new_post input[type=submit] {
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 11pt;
   margin: 10px;
   padding: 6px;
+  display: block;
 }
-/* line 396, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 644, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user span, .new_subreddit span, .new_post span {
   display: block;
   color: #888;
   font-size: 9pt;
 }
-/* line 402, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+/* line 650, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
 .new_user textarea, .new_subreddit textarea, .new_post textarea {
   display: block;
-  width: 100%;
+  width: 300px;
   height: 80px;
+}
+
+/* line 657, /home/thomas/GitHub/micro_reddit/app/assets/stylesheets/style.css.scss */
+.bold {
+  font-weight: bold;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
