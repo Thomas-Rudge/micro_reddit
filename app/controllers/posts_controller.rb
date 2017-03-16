@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def create
     @post  = Post.new(post_params)
     sub    = params[:post][:sub].downcase
-    sub_id = subreddit_id(sub)
+    sub_id = subreddit_id_from_name(sub)
     if sub
       @post.subreddit_id = sub_id
       @post.user_id      = current_user.id
