@@ -4,6 +4,6 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     sidebar     { Faker::Lorem.paragraph }
     nsfw        { [false]*5 << true }
-    mod         { [*(0..100)].sample }
+    mod         { [*(0..79)].sample }
   end
 end
