@@ -1,5 +1,4 @@
 class FrontPagesController < ApplicationController
-
   def index
     if logged_in?
       subs  = Subscription.where(user_id: current_user.id).

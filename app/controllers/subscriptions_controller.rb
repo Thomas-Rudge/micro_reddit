@@ -5,6 +5,8 @@ class SubscriptionsController < ApplicationController
 
     unless sub.nil?
       current_user.subreddits << sub
+      @mysubreddits = nil
+      @mysubreddits = current_users_subreddits
       head 202
     end
   end
