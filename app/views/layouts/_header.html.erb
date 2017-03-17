@@ -1,18 +1,25 @@
 <div class=header>
-  <h1><span>micro</span><%= link_to "reddit", root_path %></h1>
-  <div class=access>
-    <span>
-      <% if logged_in? %>
-        <%= link_to current_user.name, "/user/#{current_user.name}" %>
+  <div class=topbar>
+    <div id=sub_list>
+      <span>my subreddits</span>
+    </div>
+  </div>
+  <div>
+    <h1><span>micro</span><%= link_to "reddit", root_path %></h1>
+    <div class=access>
+      <span>
+        <% if logged_in? %>
+          <%= link_to current_user.name, "/user/#{current_user.name}" %>
 
-        (<span class=bold><%= current_user.post_karma %> - <%= current_user.comment_karma %></span>)
-         |
-        <%= link_to "logout", logout_path %>
-      <% else %>
-        <%= "Want to join?" %>
-        <%= link_to "login or signup ", signup_path %>
-        <%= "in seconds!" %>
-      <% end %>
-    </span>
+          (<span class=bold><%= current_user.post_karma %> - <%= current_user.comment_karma %></span>)
+           |
+          <%= link_to "logout", logout_path %>
+        <% else %>
+          <%= "Want to join?" %>
+          <%= link_to "login or signup ", signup_path %>
+          <%= "in seconds!" %>
+        <% end %>
+      </span>
+    </div>
   </div>
 </div>
