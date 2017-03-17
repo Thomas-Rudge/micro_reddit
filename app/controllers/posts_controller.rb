@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  TEXTPOST_THUMBNAIL = "http://i.imgur.com/vKvm5pe.jpg"
 
   def new
     @post = Post.new
@@ -14,7 +13,7 @@ class PostsController < ApplicationController
       @post.subreddit_id = sub_id
       @post.user_id      = current_user.id
       @post.post_type    = post_type(params[:post][:link])
-      @post.thumbnail    = TEXTPOST_THUMBNAIL if @post.post_type == 0
+      @post.thumbnail    = get_metadata(@post.link) if @post.thumbnail.blank?
       @post.upvotes      = 1
 
       if @post.save
