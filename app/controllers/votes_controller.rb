@@ -104,7 +104,7 @@ class VotesController < ApplicationController
                           post_id: @ok_params[:postid],
                           comment_id: @ok_params[:id])
 
-      unless vote.nil?
+      unless vote
         vote = Vote.new(user_id: current_user.id,
                         post_id: @ok_params[:postid],
                         comment_id: @ok_params[:id])
