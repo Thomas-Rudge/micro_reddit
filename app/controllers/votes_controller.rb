@@ -2,18 +2,23 @@ class VotesController < ApplicationController
   before_action { head 403 unless logged_in? }
 
   def update
-    @ok_params = params.permit(:id, :type, :karma, :postid)
-    @karma = @ok_params[:karma].to_i
+    @ok_params      = params.permit(:id, :type, :karma, :postid)
+    @karma          = @ok_params[:karma].to_i
     @ok_params[:id] = @ok_params[:id].blank? ? nil : @ok_params[:id]
 
     head 403 if bad_params?
 
-    case @karma
-    when 2  then upvote
-    when 1  then upvote
-    when 0  then remove_vote
-    when -1 then downvote
-    when -2 then downvote
+    @vote_subject = find_vote_subject
+    @vote = find_or_generate_vote
+
+    unless @vote_subject.nil?
+      case @karma
+      when 2  then upvote
+      when 1  then upvote
+      when 0  then remove_vote
+      when -1 then downvote
+      when -2 then downvote
+      end
     end
 
     head 202
@@ -22,50 +27,37 @@ class VotesController < ApplicationController
   private
 
     def upvote
-      vote_subject = find_vote_subject
-      return if vote_subject.nil?
+      @vote.vote = 1
 
-      vote = find_or_generate_vote
-      vote.vote = 1
-
-      if vote.save
-        @karma.times { vote_subject.increment!(:upvotes) }
-        update_user_karma(vote_subject.user_id)
+      if @vote.save
+        @karma.times { @vote_subject.increment!(:upvotes) }
+        update_user_karma
       end
     end
 
     def downvote
-      vote_subject = find_vote_subject
-      return if vote_subject.nil?
+      @vote.vote = 0
 
-      vote = find_or_generate_vote
-      vote.vote = 0
-
-      if vote.save
-        @karma.abs.times { vote_subject.increment!(:downvotes) }
-        update_user_karma(vote_subject.user_id)
+      if @vote.save
+        @karma.abs.times { @vote_subject.increment!(:downvotes) }
+        update_user_karma
       end
     end
 
     def remove_vote
-      vote_subject = find_vote_subject
-      return if vote_subject.nil?
-
-      vote = find_or_generate_vote
-
-      case vote.vote
-      when 0 then vote_subject.decrement!(:downvotes)
-      when 1 then vote_subject.decrement!(:upvotes)
+      case @vote.vote
+      when 0 then @vote_subject.decrement!(:downvotes)
+      when 1 then @vote_subject.decrement!(:upvotes)
       end
 
-      @karma = vote.vote == 0 ? 1 : -1
-      update_user_karma(vote_subject.user_id)
+      @karma = @vote.vote == 0 ? 1 : -1
+      update_user_karma
 
-      vote.destroy rescue nil
+      @vote.destroy rescue nil
     end
 
-    def update_user_karma(user_id)
-      user = User.find(user_id) rescue nil
+    def update_user_karma
+      user = User.find(@vote_subject.user_id) rescue nil
       return if user.nil?
 
       attribute = @ok_params[:type] == "post" ? :post_karma : :comment_karma
