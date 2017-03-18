@@ -24,6 +24,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri
   gem 'rspec-rails',        '~> 3.5'
+  gem 'rails-controller-testing'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'faker', branch: 'master' , git: 'https://github.com/stympy/faker.git'
   gem 'capybara',           '~> 2.5'
