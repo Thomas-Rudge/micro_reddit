@@ -3,7 +3,8 @@ class SubredditsController < ApplicationController
   def index
     @subreddits = Subreddit.order("subscriptions_count DESC").all.
                             paginate(page: params[:page], per_page: 30)
-    @subscriptions = Subscription.where(user_id: current_user.id).pluck(:subreddit_id) rescue nil
+    @subscriptions = Subscription.where(user_id: current_user.id).
+                                  pluck(:subreddit_id) rescue nil
   end
 
   def new
