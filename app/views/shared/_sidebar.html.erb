@@ -1,3 +1,7 @@
+<% random_image = ["http://i.imgur.com/QcC2Mf4.jpg", "http://i.imgur.com/5vGHZTZ.jpg", %>
+<%                 "http://i.imgur.com/QjNSFPu.png", "http://i.imgur.com/ZbDR3Xq.jpg", %>
+<%                 "http://i.imgur.com/T2Hld7B.png"]                                   %>
+
 <div class=sidebar>
   <div class=search_box>
     <%= form_for(:search, url: "#") do |f| %>
@@ -27,6 +31,7 @@
       <% end %>
     </div>
   <% end %>
+  <%= image_tag random_image.sample %>
   <div class="sidebar_text">
     <%= yield(:sidebar_text) %>
     <% if (["subreddits", "posts"].include? controller_name) && !yield(:moderator).blank? %>

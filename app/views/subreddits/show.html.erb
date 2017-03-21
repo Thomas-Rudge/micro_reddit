@@ -10,6 +10,8 @@
       <% @posts.each do |post| %>
         <%= render partial: "shared/post", locals: {post: post} %>
       <% end %>
+
+      <%= will_paginate @posts %>
     <% end %>
   </div>
   <%= render "shared/sidebar" %>

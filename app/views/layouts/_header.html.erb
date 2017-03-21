@@ -1,9 +1,26 @@
 <div class=header>
   <div class=topbar>
     <div id=sub_list>
-      <span>my subreddits</span>
+      <span id=my_subreddits>my subreddits</span>
+      <ul id=topbar_wrapper>
+        <% current_popular_subreddits.each do |subreddit| %>
+           <li class=topbar_subreddits><%= link_to " - #{subreddit}", "/r/#{subreddit}" %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
+  <div id=my_subreddit_list>
+    <% if logged_in? %>
+      <ul>
+        <% current_users_subreddits.each do |subreddit| %>
+          <li><%= link_to subreddit, "/r/#{subreddit}" %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= link_to "login or signup ", signup_path %>
+    <% end %>
+  </div>
+  <%= link_to "more...", "/subreddits", id: "more_subreddits" %>
   <div>
     <h1><span>micro</span><%= link_to "reddit", root_path %></h1>
     <div class=access>

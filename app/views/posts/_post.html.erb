@@ -5,11 +5,12 @@
     <span id=dp<%= @post.id %> data="-1" class='downvote<%= @post_vote unless @post_vote == " upvoted" %>'>&#8615;</span>
   </div>
   <div class=thumbnail_box>
+    <% default_thumbnail = @post.post_type == 0 ? "http://i.imgur.com/vKvm5pe.jpg" : "http://i.imgur.com/B9phcsk.jpg" %>
     <% if @post.post_type == 0 %>
-      <%= image_tag @post.thumbnail, class: 'post_thumbnail' %>
+      <%= image_tag @post.thumbnail || default_thumbnail, class: 'post_thumbnail' %>
     <% else %>
       <%= link_to @post.link do %>
-        <%= image_tag @post.thumbnail, class: 'post_thumbnail' %>
+        <%= image_tag @post.thumbnail || default_thumbnail, class: 'post_thumbnail' %>
       <% end %>
     <% end %>
   </div>
