@@ -165,7 +165,7 @@ h3 {
 #my_subreddit_list {
   @include shrink_wrap;
   display: none;
-  position: fixed;
+  position: absolute;
   top: 13px;
   left: 0;
   width: auto;
@@ -196,10 +196,24 @@ h3 {
       }
     }
   }
+
+  .prompt {
+    display: block;
+    font-size: 10pt;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 3px 10px;
+    color: $light-yellow;
+    border-top: 1px solid $logo-grey;
+
+    &:hover {
+      background: $logo-grey;
+    }
+  }
 }
 
 #more_subreddits {
-  position: fixed;
+  position: absolute;
   top: 0px;
   right: 0px;
   height: 13px;

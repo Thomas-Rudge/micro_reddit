@@ -17,7 +17,7 @@
         <% end %>
       </ul>
     <% else %>
-      <%= link_to "login or signup ", signup_path %>
+      <%= link_to "login or signup ", signup_path, class: 'prompt' %>
     <% end %>
   </div>
   <%= link_to "more...", "/subreddits", id: "more_subreddits" %>
