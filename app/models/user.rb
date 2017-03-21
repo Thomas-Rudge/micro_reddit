@@ -52,6 +52,18 @@ class User < ApplicationRecord
     self.post_karma + self.comment_karma
   end
 
+  def reset_karma
+    total_post_karma    = 0
+    total_comment_karma = 0
+    post_karma    = self.posts.pluck(:upvotes, :downvotes)
+    comment_karma = self.comments.pluck(:upvotes, :downvotes)
+    post_karma.each    { |karma| total_post_karma += karma[0] - karma[1] }
+    comment_karma.each { |karma| total_comment_karma += karma[0] - karma[1] }
+    self.post_karma    = total_post_karma
+    self.comment_karma = total_comment_karma
+    self.save validate: false
+  end
+
   def to_s
     puts "-" * 20
     puts "ID: #{id}"

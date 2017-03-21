@@ -4,8 +4,6 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :subreddit
 
-  DEFAULT_THUMBNAIL = "http://i.imgur.com/D6QAHtY.jpg"
-
   attr_accessor :sub
 
   before_validation :process_link
@@ -45,10 +43,10 @@ class Post < ApplicationRecord
       begin
         thumb = URI.parse(self.thumbnail)
         unless ["http", "https"].include? thumb.scheme
-          self.thumbnail = DEFAULT_THUMBNAIL
+          self.thumbnail = nil
         end
       rescue
-        self.thumbnail = DEFAULT_THUMBNAIL
+        self.thumbnail = nil
       end
     end
 end

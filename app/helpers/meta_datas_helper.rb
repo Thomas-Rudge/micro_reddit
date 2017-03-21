@@ -2,9 +2,8 @@ module MetaDatasHelper
   include PostsHelper
 
   IMG_REGEX         = /(\.jpg|\.jpeg|\.gif|\.png|\.bmp)\z/
-  DEFAULT_THUMBNAIL = "http://i.imgur.com/D6QAHtY.jpg"
   IMAGE_META_TAGS   = ["thumbnail", "og:image", "twitter:image"]
-  DEFAULT_METADATA  = {title: "", thumbnail: DEFAULT_THUMBNAIL}
+  DEFAULT_METADATA  = {title: "", thumbnail: nil}
 
   def get_metadata(url)
     data = DEFAULT_METADATA
@@ -25,8 +24,6 @@ module MetaDatasHelper
           data[:thumbnail] = html.at(%Q{meta[@property="#{tag}"]}).to_h['content']
           break unless data[:thumbnail].nil?
         end
-
-        data[:thumbnail] = DEFAULT_THUMBNAIL if data[:thumbnail].nil?
       end
     end
 
@@ -42,7 +39,9 @@ module MetaDatasHelper
 
   def get_html(url)
     begin
-      html = open(url.to_s).read
+      html = open(url.to_s,
+                 "User-Agent"=>"MicroRedditSeeder:v0.0.1 (by /u/tomarse)",
+                 "From"=>"hello@thomasrudge.co.uk").read
     rescue
       toggle_http_ssl(url)
 
@@ -58,7 +57,9 @@ module MetaDatasHelper
 
   def set_thumbnail_for_image_links(url)
     if (url.host.ends_with? "imgur.com") || (url.host.ends_with? "flickr.com")
-      url = url.to_s.gsub(IMG_REGEX, "s#{$1}") #imgur 90x90, Flickr 75x75
+      url = url.to_s[0..url.to_s.index("?")]
+      url = "#{url}.jpg" unless url =~ IMG_REGEX
+      url = url.gsub(IMG_REGEX, "s#{$1}") #imgur 90x90, Flickr 75x75
     end
 
     url.to_s

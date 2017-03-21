@@ -1,6 +1,4 @@
 module PostsHelper
-  TEXTPOST_THUMBNAIL = "http://i.imgur.com/vKvm5pe.jpg"
-
   def add_scheme_to_link(link)
     # Expects and returns an URI object
     if link.scheme.nil? && !link.to_s.blank?
