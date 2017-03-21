@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# This is so Heroku precompiles its own assets
+public/assets/**
+
 # Ignore sensitive environment variables for captcha
 .env
 
