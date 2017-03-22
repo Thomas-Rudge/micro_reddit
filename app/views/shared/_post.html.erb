@@ -7,6 +7,8 @@
 <%   post_vote = ""           %>
 <% end                        %>
 
+<% default_thumbnail = post.post_type == 0 ? "http://i.imgur.com/vKvm5pe.jpg" : "http://i.imgur.com/B9phcsk.jpg" %>
+
 <div class=post>
   <div class=votes>
     <span id=up<%= post.id %> data="-1" class='upvote<%= post_vote unless post_vote == " downvoted" %>'>&#8613;</span>
@@ -14,13 +16,8 @@
     <span id=dp<%= post.id %> data="-1" class='downvote<%= post_vote unless post_vote == " upvoted" %>'>&#8615;</span>
   </div>
   <div class=thumbnail_box>
-    <% default_thumbnail = post.post_type == 0 ? "http://i.imgur.com/vKvm5pe.jpg" : "http://i.imgur.com/B9phcsk.jpg" %>
-    <% if post.post_type == 0 %>
+    <%= link_to post.link do %>
       <%= image_tag post.thumbnail || default_thumbnail, class: 'post_thumbnail' %>
-    <% else %>
-      <%= link_to post.link do %>
-        <%= image_tag post.thumbnail || default_thumbnail, class: 'post_thumbnail' %>
-      <% end %>
     <% end %>
   </div>
   <div class=post_details>
@@ -47,6 +44,9 @@
       <%= link_to pluralize(post.comment_count, "comment"), "/r/#{post.subreddit.name}/#{post.id}" %>
     <% else %>
       <%= link_to pluralize(post.comment_count, "comment"), "/r/#{@subreddit.name}/#{post.id}" %>
+    <% end %>
+    <% if controller_name == "posts" && @post.post_type == 0 && !@post.post_text.blank? %>
+      <div class=post_text_box><%= @post.post_text %></div>
     <% end %>
   </div>
 </div>
