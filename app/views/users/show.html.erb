@@ -1,9 +1,13 @@
 <% provide(:title, @user.nil? ? "Error" : @user.name) %>
-<% if @user.nil? %>
-  <%= render 'layouts/woops' %>
-<% else %>
-  <div class=main>
-    <div class=box>
-    </div>
+<div class=main>
+  <div class=box>
+    <% @user_collection.each do |item| %>
+      <% if item.is_a? Post %>
+        <%= render partial: "shared/post", locals: {post: item} %>
+      <% else %>
+        <%= render partial: "shared/comment", locals: {comment: item} %>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+  <%= render "shared/sidebar" %>
+</div>

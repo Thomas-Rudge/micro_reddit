@@ -19,8 +19,28 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(name: params["name"])
 
-    unless @user
+    if @user.nil?
       flash.now[:danger] = "Could not find user #{params["name"]}"
+      @user_collection = Array.new
+    else
+      posts    = @user.posts
+      comments = @user.comments
+      @user_collection = (posts + comments).sort! { |a,b| b.created_at <=> a.created_at }
+      @user_collection.paginate(page: params[:page], per_page: 30)
+
+      @comments_votes = Hash.new
+      @votes          = Hash.new
+      if logged_in?
+        all_votes = @user.votes
+
+        all_votes.each do |vote|
+          if vote.comment_id.nil?
+            @votes[vote.post_id] = vote.vote
+          else
+            @comments_votes[vote.comment_id] = vote.vote
+          end
+        end
+      end
     end
   end
 

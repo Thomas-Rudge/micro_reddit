@@ -10,7 +10,13 @@
         <%= render 'comment_form' %>
       <% end %>
       <ul class=post_comment_list>
-        <%= render 'post_comments' %>
+        <% unless @comments.nil? %>
+          <% @comments.each do |comment| %>
+            <%= render partial: "shared/comment", locals: {comment: comment} %>
+          <% end %>
+
+          <%= will_paginate @comments %>
+        <% end %>
       </ul>
     <% end %>
   </div>
