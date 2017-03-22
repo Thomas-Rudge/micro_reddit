@@ -31,7 +31,9 @@
       <% end %>
     </div>
   <% end %>
-  <%= image_tag random_image.sample %>
+  <%= link_to "https://www.reddit.com", rel:"noopener noreferrer", target:"_blank" do %>
+    <%= image_tag random_image.sample %>
+  <% end %>
   <div class="sidebar_text">
     <%= yield(:sidebar_text) %>
     <% if (["subreddits", "posts"].include? controller_name) && !yield(:moderator).blank? %>
