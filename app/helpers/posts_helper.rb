@@ -6,7 +6,7 @@ module PostsHelper
       link.scheme = "http"
     end
     # This ensures the URI type is HTTP instead of Generic
-    URI.parse(link.to_s)
+    URI.parse(link.to_s.downcase)
   end
 
   def subreddit_id_from_name(sub)

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   get  '/post_title', to: 'meta_datas#get_title'
   post '/karma',      to: 'votes#update'
-  get  '/search',     to: 'search#new'
+  post '/search',     to: 'search#new'
 
   # Static pages
   get '/legal', to: 'static_pages#legal'

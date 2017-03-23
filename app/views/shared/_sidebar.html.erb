@@ -4,7 +4,7 @@
 
 <div class=sidebar>
   <div class=search_box>
-    <%= form_for(:search, url: "#") do |f| %>
+    <%= form_for(:search, url: search_path) do |f| %>
       <%= f.text_field :search, class: "search_text", placeholder: "search" %>
       <%= f.submit "\u26B2", class: "search_btn" %>
     <% end %>

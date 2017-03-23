@@ -1,0 +1,12 @@
+<% provide(:title, "Search Results") %>
+<div class=main>
+  <div class=box>
+    <h3>Search: <%= params[:search][:search] %></h3>
+    <% @search_results.each do |post| %>
+      <%= render partial: "shared/post", locals: {post: post} %>
+    <% end %>
+
+    <%= will_paginate @search_results %>
+  </div>
+  <%= render "shared/sidebar" %>
+</div>
