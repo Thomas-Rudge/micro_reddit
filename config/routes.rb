@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
   resources :users, only: [:destroy]
 
-  get  '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+  get  '/signup',    to: 'users#new'
+  post '/signup',    to: 'users#create'
+  get '/user/:name', to: 'users#show'
 
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
-
-  get '/user/:name', to: 'users#show'
-
-  get '/post_title', to: 'meta_datas#get_title'
 
   get    '/r/:name',                 to: 'subreddits#show'
   get    '/subreddits/create',       to: 'subreddits#new'
@@ -32,7 +29,9 @@ Rails.application.routes.draw do
   post   '/subscribe',   to: 'subscriptions#create'
   post   '/unsubscribe', to: 'subscriptions#destroy'
 
-  post   '/karma',                 to: 'votes#update'
+  get  '/post_title', to: 'meta_datas#get_title'
+  post '/karma',      to: 'votes#update'
+  get  '/search',     to: 'search#new'
 
   # Static pages
   get '/legal', to: 'static_pages#legal'
