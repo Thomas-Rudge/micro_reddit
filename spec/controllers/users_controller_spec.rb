@@ -65,16 +65,3 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 end
-
-
-def create
-    @user = User.new(user_params)
-
-    if (Rails.env.development? && @user.save) ||
-       (verify_recaptcha(model: @user) && @user.save)
-      log_in @user
-      redirect_to root_url
-    else
-      render :new
-    end
-  end
