@@ -72,7 +72,10 @@ puts "Nil subbed posts #{Post.where(subreddit_id: nil).count}"
 puts "Post data posted"
 # A lot of self posts where the bulk of details is in the post, which I can't get to :/
 puts "Clearing out unwanted self-posts"
-Post.where(subreddit_id: (Subreddit.find_by(name: "dataisbeautiful").id), post_type: 0).destroy_all
+Post.where(subreddit_id: (Subreddit.where(name: ["dataisbeautiful",
+                                                 "pics",
+                                                 "aww",
+                                                 "funny"])), post_type: 0).destroy_all
 puts "Self-posts cleared"
 # Have each user subscribe to some subreddits
 puts "Subscribing users to subreddits"
