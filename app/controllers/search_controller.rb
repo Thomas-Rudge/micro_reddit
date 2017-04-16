@@ -1,13 +1,16 @@
 class SearchController < ApplicationController
   def new
-    search_term = search_params[:search].downcase
+    # TODO// use Ajax in view to handle empty search strings
+    search_term = params[:search][:search].downcase
+
     @search_results = Post.where("lower(title) LIKE ? OR link LIKE ?",
                                  "%#{search_term}%",
                                  "%#{search_term}%").
                            order("created_at DESC").
                            paginate(page: params[:page], per_page: 30)
+
     if @search_results.empty?
-      flash.now[:information] = "No results found"
+      flash.now[:information] = "No results found for: #{search_term}"
     end
 
     @votes = Hash.new
@@ -19,10 +22,4 @@ class SearchController < ApplicationController
       end
     end
   end
-
-  private
-
-    def search_params
-      params.require(:search).permit(:search)
-    end
 end
