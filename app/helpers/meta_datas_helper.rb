@@ -11,7 +11,7 @@ module MetaDatasHelper
 
 
     begin
-      url  = add_scheme_to_link(URI.parse(url))
+      url  = URI.parse(add_scheme_to_link(url))
       html = Nokogiri::HTML(get_html(url))
       data[:title] = html.title
 

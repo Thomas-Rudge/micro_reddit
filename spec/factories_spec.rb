@@ -4,7 +4,8 @@ FactoryGirl.factories.map(&:name).each do |factory_name|
   describe "The #{factory_name} factory" do
     it 'is valid' do
       if factory_name == :comment
-        post = FactoryGirl.create(:text_post)
+        post = FactoryGirl.build(:text_post)
+        post.save
         factory = FactoryGirl.build(factory_name,
                                     user_id: post.user.id,
                                     post_id: post.id)

@@ -73,8 +73,7 @@ RSpec.describe Post, type: :model do
 
         expect(post.valid?).to be false
         expect(post.errors.details[:link]).to be_an(Array)
-        expect(post.errors.details[:link][0][:error]).to eql :invalid
-        expect(post.errors.details[:link][1][:error]).to eql :blank
+        expect(post.errors.details[:link][0][:error]).to eql :blank
       end
     end
 

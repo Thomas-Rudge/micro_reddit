@@ -8,11 +8,12 @@ class Post < ApplicationRecord
 
   before_validation :process_link
   before_save :clean_up_post_for_database, :process_thumbnail
+  after_save :set_text_post_link
 
   validates :title, presence: true,
                     length: { maximum: 255 }
 
-  validates :link, presence: true
+  validates :link, presence: true, if: "self.post_type == 1"
 
   validates :post_type, presence: true,
                         inclusion: { in: [ 0, 1 ] }
@@ -24,11 +25,8 @@ class Post < ApplicationRecord
   protected
 
     def process_link
-      return link if link.blank?
-      if self.post_type == 0
-        self.link = "/r/#{self.subreddit.name}/#{self.id}"
-      else
-        self.link = add_scheme_to_link(URI.parse(self.link)).to_s
+      if self.post_type == 1
+        self.link = add_scheme_to_link(self.link)
       end
     end
 
@@ -50,6 +48,12 @@ class Post < ApplicationRecord
         end
       rescue
         self.thumbnail = nil
+      end
+    end
+
+    def set_text_post_link
+      if self.post_type == 0 && self.link.nil?
+        self.update_attribute(:link, "/r/#{self.subreddit.name}/#{self.id}")
       end
     end
 end

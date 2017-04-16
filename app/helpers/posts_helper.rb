@@ -1,12 +1,16 @@
 module PostsHelper
   def add_scheme_to_link(link)
-    # Expects and returns an URI object
+    link = URI.parse(link)
     if link.scheme.nil? && !link.to_s.blank?
       link.path   = "//#{link.path}" unless link.path.blank? || (link.path.starts_with? "//")
       link.scheme = "http"
+      # This ensures the URI type is HTTP instead of Generic
+      link = URI.parse(link.to_s.downcase)
+    elsif !["http", "https"].include? link.scheme
+      link = ""
     end
-    # This ensures the URI type is HTTP instead of Generic
-    URI.parse(link.to_s.downcase)
+
+    link.to_s
   end
 
   def subreddit_id_from_name(sub)
